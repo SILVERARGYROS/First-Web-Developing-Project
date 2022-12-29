@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS meteo_temp (
-    station_name varchar(100),
+    station_name varchar(150),
     data_date varchar(20),
     avg_temp_C float,
     max_temp_C float,

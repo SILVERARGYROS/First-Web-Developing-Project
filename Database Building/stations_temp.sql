@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS stations_temp (
-    station_name varchar(100),
+    station_name varchar(150),
     latitude float,
     longitude float,
     altitude float

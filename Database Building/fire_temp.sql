@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS fire_temp (
-    τμήμα varchar(100),
-    νομός varchar(100),
-    δήμος varchar(100),
+    τμήμα varchar(150),
+    νομός varchar(150),
+    δήμος varchar(150),
     ημερομηνία_έναρξης varchar(20),
     ώρα_έναρξης varchar(20),
     ημερομηνία_κατάσβεσης varchar (20),
