@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS meteo_temp (
     station_name varchar(150),
-    data_date varchar(20),
+    date varchar(20),
     avg_temp_C float,
     max_temp_C float,
     min_temp_C float,
@@ -18,4 +18,4 @@ CREATE TABLE IF NOT EXISTS meteo_temp (
 
 INSERT INTO meteo_temp VALUES ('aghiosnikolaos',2010-11-23,21.6,23.5,19.4,58.4,71,46,1009.1,1010.3,1008.1,0.0,24.6,'S',70.8);
 
-\copy meteo_temp FROM '/home/Data/2022-23/meteo_data.csv' DELIMITER ';' csv header;
+\copy meteo_temp FROM '/home/Data/2022-23/meteo_data.csv' DELIMITER ';' csv header NULL as 'NULL';
