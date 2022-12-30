@@ -1,4 +1,4 @@
-CREATE TABLE Μ_Δεδομένα (
+CREATE TABLE IF NOT EXISTS Μ_Δεδομένα (
     id SERIAL,
     ημερομηνία VARCHAR(20),
     μέση_θερμοκρασία FLOAT,

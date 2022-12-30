@@ -1,4 +1,5 @@
-CREATE TABLE Δήμοι (id SERIAL,
+CREATE TABLE IF NOT EXISTS Δήμοι (
+    id SERIAL,
     όνομα_περιφέριας VARCHAR(150),
     όνομα_νομού VARCHAR(150),
     όνομα_Δήμου VARCHAR(150),

@@ -1,4 +1,4 @@
-CREATE TABLE ΕΚΔΗΛΩΘΗΚΑΝ (
+CREATE TABLE IF NOT EXISTS ΕΚΔΗΛΩΘΗΚΑΝ (
     idΔΠ INTEGER,
     idΔήμοι INTEGER,
     FOREIGN KEY(idΔΠ) references Δασικές_Πυρκαγιές(id),

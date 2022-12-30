@@ -1,4 +1,4 @@
-CREATE TABLE ΚΑΤΑΓΡΑΦΕΣ (
+CREATE TABLE IF NOT EXISTS ΚΑΤΑΓΡΑΦΕΣ (
 	idΜΣ INTEGER,
 	idΜΔ INTEGER,
 	FOREIGN KEY(idΜΣ) references Μ_Σταθμοί(id),

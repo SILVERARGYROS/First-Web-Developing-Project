@@ -1,4 +1,5 @@
-CREATE TABLE Δασικές_Πυρκαγιές (id SERIAL,
+CREATE TABLE IF NOT EXISTS Δασικές_Πυρκαγιές (
+    id SERIAL,
     όνομα_πυρ_σώματος VARCHAR(150),
     ημερομ_έναρξης VARCHAR(20),
     ώρα_έναρξης VARCHAR(20),

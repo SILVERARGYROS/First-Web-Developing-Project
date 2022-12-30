@@ -1,4 +1,4 @@
-CREATE TABLE Μ_Σταθμοί (
+CREATE TABLE IF NOT EXISTS Μ_Σταθμοί (
     id SERIAL,
     όνομα_μετεωρ_σταθμού VARCHAR(150),
     γεωγ_πλάτος	FLOAT,
