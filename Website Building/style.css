@@ -33,6 +33,20 @@ h3 {
   color: lightgrey; 
 }
 
+pre {
+  color:lightgrey;
+  background-color: #00404D;
+  border-radius: 1ch;
+  width:max-content;
+}
+
+table {
+  color:lightgrey;
+  background-color: #00404D;
+  border-radius: 1ch;
+  width:max-content;
+}
+
 .menuTitle {
   text-align: left;
   width: 700pt;
@@ -105,11 +119,4 @@ h3 {
 .topnav-right {
   float: right;
   vertical-align: middle;
-}
-
-pre{
-  color:lightgrey;
-  background-color: #00404D;
-  border-radius: 1ch;
-  width:max-content;
 }

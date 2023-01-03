@@ -32,5 +32,8 @@
         <form action="viewlocations.php"><button class="block">Δήμοι</button></form>
         <form action="viewstations.php"><button class="block">Μ. Σταθμοί</button></form>
         <form action="viewdata.php"><button class="block">Μ. Δεδομένα</button></form>
+        <form action="viewreportstations.php"><button class="block">Μ. Δεδομένα</button></form>
+        <form action="viewoccurances.php"><button class="block">Μ. Δεδομένα</button></form>
+        <form action="viewrecordings.php"><button class="block">Μ. Δεδομένα</button></form>
     </body>
 </html>
