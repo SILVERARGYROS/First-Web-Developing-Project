@@ -106,3 +106,10 @@ h3 {
   float: right;
   vertical-align: middle;
 }
+
+pre{
+  color:lightgrey;
+  background-color: #00404D;
+  border-radius: 1ch;
+  width:max-content;
+}

@@ -23,18 +23,14 @@
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Home Page</h3>
+        <h3>Add Row</h3>
         <h1>
-            Welcome to the db1u10 database management website.
-            Here you can view and manage all the information inside the database.<br>
+            Please select in which table you want to add content to.
         </h1>
-
-        <div class="menuTitle">NAVIGATION MENU</div>
-        <form action="viewnav.php"><button class="block">View content</button></form>
-        <form action="addnav.php"><button class="block">Add content manually</button></form>
-        <form action="addfilenav.php"><button class="block">Add content from file</button></form>
-        <form action="delnav.php"><button class="block">Delete content manually</button></form>
-        <form action="delfilenav.php"><button class="block">Erase content from file</button></form>
-        <form action="cleardb.php"><button class="block">Clear Database</button></form>
-        <form action="arc.php"><button class="block">Inspect table architecture</button></form>
+        <div class="menuTitle">AVAILABLE TABLES</div>
+        <form action="addfires.php"><button class="block">Δασικές Πυρκαγιές</button></form>
+        <form action="addlocations.php"><button class="block">Δήμοι</button></form>
+        <form action="addstations.php"><button class="block">Μ. Σταθμοί</button></form>
+        <form action="adddata.php"><button class="block">Μ. Δεδομένα</button></form>
     </body>
+</html>
