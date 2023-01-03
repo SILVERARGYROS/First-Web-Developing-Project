@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS fire_temp (
     δήμος varchar(150),
     ημερομηνία_έναρξης varchar(20),
     ώρα_έναρξης varchar(20),
-    ημερομηνία_κατάσβεσης varchar (20),
+    ημερομηνία_κατάσβεσης varchar(20),
     ώρα_κατάσβεσης varchar(20),
     καμμένη_έκταση_στρ float,
     προσωπικό integer,
