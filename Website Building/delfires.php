@@ -73,14 +73,15 @@
                     $result = pg_query($link, "SELECT * FROM Δασικές_Πυρκαγιές WHERE όνομα_πυρ_σώματος='$a1' AND ημερομ_έναρξης='$a2' AND ώρα_έναρξης='$a3' 
                     AND ημερομ_κατασβ='$a4' AND ώρα_κατασβ='$a5' AND καμμένη_έκταση=$a6 AND πλήθος_προσωπικού=$a7 AND πλήθος_οχημάτων=$a8 AND πλήθος_εναέριων_μέσων=$a9;");
                     
-                    $rows = pg_NumRows($result);
+                    $rows = pg_num_rows($result);
 
                     if($rows<1)
                     {
                         echo "Element you tried to delete doesn't exists!";
                     }
                     else{
-                        $query = "DELETE FROM Δασικές_Πυρκαγιές(id, όνομα_πυρ_σώματος, ημερομ_έναρξης, ώρα_έναρξης, ημερομ_κατασβ, ώρα_κατασβ, καμμένη_έκταση, πλήθος_προσωπικού, πλήθος_οχημάτων, πλήθος_εναέριων_μέσων) VALUES (default,'$a1','$a2','$a3','$a4','$a5',$a6,$a7,$a8,$a9);";
+                        $query = "DELETE FROM Δασικές_Πυρκαγιές WHERE όνομα_πυρ_σώματος='$a1' AND ημερομ_έναρξης='$a2' AND ώρα_έναρξης='$a3' AND ημερομ_κατασβ='$a4' 
+                        AND ώρα_κατασβ='$a5' AND καμμένη_έκταση=$a6 AND πλήθος_προσωπικού=$a7 AND πλήθος_οχημάτων=$a8 AND πλήθος_εναέριων_μέσων=$a9;";
                         
                         $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
                         echo "Element found and deleted successfully.";
