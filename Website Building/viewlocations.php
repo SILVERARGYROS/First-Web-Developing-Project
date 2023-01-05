@@ -29,10 +29,10 @@
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
                 or die ("Could not connect to server\n");
 
-            $result = pg_exec($link, "SELECT * FROM Δήμοι;")
+            $result = pg_query($link, "SELECT * FROM Δήμοι;")
                 or die("Cannot execute query: $query\n");
 
-            $numrows = pg_numrows($result);
+            $numrows = pg_num_rows($result);
         ?>
         <table border="1">
             <tr>
@@ -49,8 +49,7 @@
             for($ri = 0; $ri < $numrows; $ri++) {
                 echo "<tr>\n";
                 $row = pg_fetch_array($result, $ri);
-                echo " <td>", $row["Δήμοι"], "</td>
-                <td>", $row["id"], "</td>
+                echo " <td>", $row["id"], "</td>
                 <td>", $row["όνομα_περιφέριας"], "</td>
                 <td>", $row["όνομα_νομού"], "</td>	
                 <td>", $row["όνομα_Δήμου"], "</td>	

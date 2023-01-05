@@ -29,7 +29,7 @@
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
                 or die ("Could not connect to server\n");
 
-            $result = pg_exec($link, "SELECT * FROM ΕΚΔΗΛΩΘΗΚΑΝ;")
+            $result = pg_query($link, "SELECT * FROM ΕΚΔΗΛΩΘΗΚΑΝ;")
                 or die("Cannot execute query: $query\n");
 
             $numrows = pg_numrows($result);
@@ -45,8 +45,7 @@
             for($ri = 0; $ri < $numrows; $ri++) {
                 echo "<tr>\n";
                 $row = pg_fetch_array($result, $ri);
-                echo " <td>", $row["ΕΚΔΗΛΩΘΗΚΑΝ"], "</td>
-                <td>", $row["idΔΠ"], "</td>
+                echo " <td>", $row["idΔΠ"], "</td>
                 <td>", $row["idΔήμοι"], "</td>
                 </tr>
                 ";

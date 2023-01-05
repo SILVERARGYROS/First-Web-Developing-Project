@@ -58,8 +58,7 @@
             for($ri = 0; $ri < $numrows; $ri++) {
                 echo "<tr>\n";
                 $row = pg_fetch_array($result, $ri);
-                echo " <td>", $row["Μ_Δεδομένα"], "</td>
-                <td>", $row["id"], "</td>
+                echo " <td>", $row["id"], "</td>
                 <td>", $row["ημερομηνία"], "</td>
                 <td>", $row["μέση_θερμοκρασία"], "</td>	
                 <td>", $row["μέγιστη_θερμοκρασία"], "</td>	

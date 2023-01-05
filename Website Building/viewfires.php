@@ -29,10 +29,10 @@
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
                 or die ("Could not connect to server\n");
 
-            $result = pg_exec($link, "SELECT * FROM Δασικές_Πυρκαγιές;")
+            $result = pg_query($link, "SELECT * FROM Δασικές_Πυρκαγιές;")
                 or die("Cannot execute query: $query\n");
 
-            $numrows = pg_numrows($result);
+            $rows = pg_num_rows($result);
         ?>
         <table border="1">
             <tr>
@@ -50,11 +50,10 @@
             <?php
 
             // Loop on rows in the result set.
-            for($ri = 0; $ri < $numrows; $ri++) {
+            for($ri = 0; $ri < $rows; $ri++) {
                 echo "<tr>\n";
                 $row = pg_fetch_array($result, $ri);
-                echo " <td>", $row["Δασικές_Πυρκαγιές"], "</td>
-                <td>", $row["id"], "</td>
+                echo " <td>", $row["id"], "</td>
                 <td>", $row["όνομα_πυρ_σώματος"], "</td>
                 <td>", $row["ημερομ_έναρξης"], "</td>	
                 <td>", $row["ώρα_έναρξης"], "</td>	
