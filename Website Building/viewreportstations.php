@@ -32,7 +32,7 @@
             $result = pg_query($link, "SELECT * FROM ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ;")
                 or die("Cannot execute query: $query\n");
 
-            $numrows = pg_numrows($result);
+            $numrows = pg_num_rows($result);
         ?>
         <table border="1">
             <tr>

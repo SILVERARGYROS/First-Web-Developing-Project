@@ -29,10 +29,10 @@
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
                 or die ("Could not connect to server\n");
 
-            $result = pg_exec($link, "SELECT * FROM Μ_Δεδομένα;")
+            $result = pg_query($link, "SELECT * FROM Μ_Δεδομένα;")
                 or die("Cannot execute query: $query\n");
 
-            $numrows = pg_numrows($result);
+            $numrows = pg_num_rows($result);
         ?>
         <table border="1">
             <tr>
