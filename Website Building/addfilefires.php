@@ -24,58 +24,38 @@
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Add file</h3>
+        <h3>Adding "fire.csv" file</h3>
         <h1>
-            Please load the '.csv' file<br>
-            <form>
-                <input type="file" id="file" name="file" accept='.csv'>
-                <input type="submit" name="submit">
-            </form>
+            <p style='color: red'>
+                <?php            
+                    $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
+                    or die("Error in connection!");
+                
+                    $query = 
+                    "CREATE TABLE IF NOT EXISTS fire_temp (
+                        τμήμα varchar(150),
+                        νομός varchar(150),
+                        δήμος varchar(150),
+                        ημερομηνία_έναρξης date,
+                        ώρα_έναρξης time,
+                        ημερομηνία_κατάσβεσης date,
+                        ώρα_κατάσβεσης time,
+                        καμμένη_έκταση_στρ float,
+                        προσωπικό integer,
+                        οχήματα integer,
+                        εναέρια integer
+                    );
+                    \copy fire_temp from '/home/Data/2022-23/fire_data.csv' DELIMITER ';' csv header null as 'NULL';
+                    insert into Δασικές_Πυρκαγιές (όνομα_πυρ_σώματος, ημερομ_έναρξης, ώρα_έναρξης, ημερομ_κατασβ, ώρα_κατασβ, καμμένη_έκταση, πλήθος_προσωπικού, πλήθος_οχημάτων, πλήθος_εναέριων_μέσων)
+                    select τμήμα, ημερομηνία_έναρξης, ώρα_έναρξης, ημερομηνία_κατάσβεσης, ώρα_κατάσβεσης, καμμένη_έκταση_στρ, προσωπικό, οχήματα, εναέρια
+                    from fire_temp;
+                    drop table fire_temp;";
+                
+                    $result = pg_query($link, $query) or die("Error executing query: $query");
+                    pg_close($link);
+                    clearstatcache();
+                ?>
+            </p>
         </h1>
-        <br>
-        <p style='color: red'>
-            <?php 
-            if (isset($_GET['submit'])){
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Check if file was uploaded without errors
-                    if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
-                        if($file_type = $_FILES["simplefile"]["type"] != ".csv")
-                        {
-                            echo "The file you uploaded was not a '.csv' file!";
-                        }
-                        else{
-                            $file = $_FILES["simplefile"]["name"];
-                            echo "file = $file<br>";
-                        }
-                    }
-                }
-                // attempt a connection
-                $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                or die("Error in connection: " . pg_last_error());
-                
-                $query = "CREATE TABLE IF NOT EXISTS fire_temp (
-                            τμήμα varchar(150),
-                            νομός varchar(150),
-                            δήμος varchar(150),
-                            ημερομηνία_έναρξης date(20),
-                            ώρα_έναρξης time(20),
-                            ημερομηνία_κατάσβεσης date(20),
-                            ώρα_κατάσβεσης time(20),
-                            καμμένη_έκταση_στρ float,
-                            προσωπικό integer,
-                            οχήματα integer,
-                            εναέρια integer
-                        );
-                        \copy fire_temp FROM '/home/Data/2022-23/$file' DELIMITER ';' csv header NULL AS 'NULL';
-                        insert into Δασικές_Πυρκαγιές (όνομα_πυρ_σώματος, ημερομ_έναρξης, ώρα_έναρξης, ημερομ_κατασβ, ώρα_κατασβ, καμμένη_έκταση, πλήθος_προσωπικού, πλήθος_οχημάτων, πλήθος_εναέριων_μέσων)
-                        select τμήμα, ημερομηνία_έναρξης, ώρα_έναρξης, ημερομηνία_κατάσβεσης, ώρα_κατάσβεσης, καμμένη_έκταση_στρ, προσωπικό, οχήματα, εναέρια
-                        from fire_temp;
-                        drop table fire_temp;";
-                
-                $result = pg_query($link, $query)
-                or die("Error in uploading: " . pg_last_error());
-            }
-            ?>
-        </p>
     </body>
 </html>

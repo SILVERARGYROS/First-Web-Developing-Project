@@ -61,7 +61,7 @@
                     $result = pg_query($link, "SELECT * FROM Δήμοι WHERE όνομα_περιφέριας='$a1' AND όνομα_νομού='$a2' AND όνομα_Δήμου='$a3' 
                     AND γεωγ_πλάτος=$a4 AND γεωγ_μήκος=$a5;");
                     
-                    $rows = pg_NumRows($result);
+                    $rows = pg_num_rows($result);
 
                     if($rows<1)
                     {
