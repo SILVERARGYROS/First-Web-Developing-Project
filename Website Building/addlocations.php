@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 Home Page</title>
+        <title>db1u10 Add Location Page</title>
     </head>
 
     <body>
@@ -14,20 +14,19 @@
         <div class="topnav">
             <a class="button" href="index.php">db1u10</a>
             <div class="topnav-right">
-                <a href="viewnav.php">View</a>
-                <a href="addnav.php">Add Row</a>
-                <a href="addfilenav.php">Add File</a>
-                <a href="delnav.php">Erase Row</a>
-                <a href="delfilenav.php">Erase File</a>
-                <a href="arc.php">Architecture</a>
+                <a href="viewnav.php">Προβολή</a>
+                <a href="addnav.php">Προσθήκη Εγγραφής</a>
+                <a href="addfilenav.php">Προσθήκη Αρχείου</a>
+                <a href="delnav.php">Διαγραφή Εγγραφής</a>
+                <a href="settings.php">Ρυθμίσεις</a>
             </div>
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Add Location</h3>
+        <h3>Προσθήκη Δήμου</h3>
         <h1>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-            Please fill all the column values to insert row in table.<br><br>
+            Παρακαλώ συμπληρώστε όλα τα ακόλουθα πεδία.<br><br>
 
             όνομα_περιφέριας:
             <input type="text" name="όνομα_περιφέριας"></input><br>
@@ -40,8 +39,8 @@
             γεωγ_μήκος:
             <input type="number" name="γεωγ_μήκος"></input><br>
 
-            <button type="reset" value="reset" name="resetfields">Clear Fields</button>
-            <input type="submit" value="submit" name="submit"></input>
+            <button type="reset" value="reset" name="resetfields">Καθαρισμός Πεδίων</button>
+            <input type="submit" value="Υποβολή" name="submit"></input>
         </h1>  
         <p style='color: red'>   
         <?php
@@ -65,20 +64,20 @@
 
                     if($rows>0)
                     {
-                        echo "Element you tried to enter already exists!";
+                        echo "Το στοιχείο που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη βάση!";
                     }
                     else{
                         $query = "INSERT INTO Δήμοι(id, όνομα_περιφέριας, όνομα_νομού, όνομα_Δήμου, γεωγ_πλάτος, γεωγ_μήκος) VALUES (default,'$a1','$a2','$a3',$a4,$a5);";
                         
                         $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
-                        echo "Element added successfully.";
+                        echo "Το στοιχείο προστέθηκε επιτυχώς.";
                     }
 
                     pg_close($link);
                 }
                 else
                 {
-                    echo "Please fill all areas!\n";
+                    echo "Παρακαλώ συμπληρώστε όλα τα πεδία!\n";
                 }
             }      
             clearstatcache();

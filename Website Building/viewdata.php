@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 Home Page</title>
+        <title>db1u10 View Data Page</title>
     </head>
     
     <body>
@@ -14,17 +14,16 @@
         <div class="topnav">
             <a class="button" href="index.php">db1u10</a>
             <div class="topnav-right">
-                <a href="viewnav.php">View</a>
-                <a href="addnav.php">Add Row</a>
-                <a href="addfilenav.php">Add File</a>
-                <a href="delnav.php">Erase Row</a>
-                <a href="delfilenav.php">Erase File</a>
-                <a href="arc.php">Architecture</a>
+                <a href="viewnav.php">Προβολή</a>
+                <a href="addnav.php">Προσθήκη Εγγραφής</a>
+                <a href="addfilenav.php">Προσθήκη Αρχείου</a>
+                <a href="delnav.php">Διαγραφή Εγγραφής</a>
+                <a href="settings.php">Ρυθμίσεις</a>
             </div>
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Viewing Table: "Data"</h3>
+        <h3>Προβολή: "Μ. Δεδομένα"</h3>
         <?php
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
                 or die ("Could not connect to server\n");

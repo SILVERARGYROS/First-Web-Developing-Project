@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 Home Page</title>
+        <title>db1u10 Delete Fires Pages</title>
     </head>
 
     <body>
@@ -14,20 +14,19 @@
         <div class="topnav">
             <a class="button" href="index.php">db1u10</a>
             <div class="topnav-right">
-                <a href="viewnav.php">View</a>
-                <a href="addnav.php">Add Row</a>
-                <a href="addfilenav.php">Add File</a>
-                <a href="delnav.php">Erase Row</a>
-                <a href="delfilenav.php">Erase File</a>
-                <a href="arc.php">Architecture</a>
+                <a href="viewnav.php">Προβολή</a>
+                <a href="addnav.php">Προσθήκη Εγγραφής</a>
+                <a href="addfilenav.php">Προσθήκη Αρχείου</a>
+                <a href="delnav.php">Διαγραφή Εγγραφής</a>
+                <a href="settings.php">Ρυθμίσεις</a>
             </div>
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Delete Fire</h3>
+        <h3>Διαγραφή Δασικής Πυρκαγίας</h3>
         <h1>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-            Please fill all the column values to insert row in table.<br><br>
+            Παρακαλώ συμπληρώστε όλα τα ακόλουθα πεδία.<br><br>
 
             όνομα_πυρ_σώματος:
             <input type="text" name="όνομα_πυρ_σώματος"></input><br>
@@ -48,7 +47,7 @@
             πλήθος_εναέριων_μέσων:
             <input type="number" name="πλήθος_εναέριων_μέσων"></input><br>
 
-            <button type="reset" value="reset" name="resetfields">Clear Fields</button>
+            <button type="reset" value="reset" name="resetfields">Καθαρισμός Πεδίων</button>
             <input type="submit" value="submit" name="submit"></input>
         </h1>  
         <p style='color: red'>   
@@ -77,21 +76,21 @@
 
                     if($rows<1)
                     {
-                        echo "Element you tried to delete doesn't exists!";
+                        echo "Το στοιχείο που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη βάση!";
                     }
                     else{
                         $query = "DELETE FROM Δασικές_Πυρκαγιές WHERE όνομα_πυρ_σώματος='$a1' AND ημερομ_έναρξης='$a2' AND ώρα_έναρξης='$a3' AND ημερομ_κατασβ='$a4' 
                         AND ώρα_κατασβ='$a5' AND καμμένη_έκταση=$a6 AND πλήθος_προσωπικού=$a7 AND πλήθος_οχημάτων=$a8 AND πλήθος_εναέριων_μέσων=$a9;";
                         
                         $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
-                        echo "Element found and deleted successfully.";
+                        echo "Το στοιχείο διαγραφτηκε επιτυχώς.";
                     }
 
                     pg_close($link);
                 }
                 else
                 {
-                    echo "Please fill all areas!\n";
+                    echo "Παρακαλώ συμπληρώστε όλα τα πεδία!\n";
                 }
             }      
             clearstatcache();

@@ -13,28 +13,25 @@
         <div class="topnav">
             <a class="button" href="index.php">db1u10</a>
             <div class="topnav-right">
-                <a href="viewnav.php">View</a>
-                <a href="addnav.php">Add Row</a>
-                <a href="addfilenav.php">Add File</a>
-                <a href="delnav.php">Erase Row</a>
-                <a href="delfilenav.php">Erase File</a>
-                <a href="arc.php">Architecture</a>
+                <a href="viewnav.php">Προβολή</a>
+                <a href="addnav.php">Προσθήκη Εγγραφής</a>
+                <a href="addfilenav.php">Προσθήκη Αρχείου</a>
+                <a href="delnav.php">Διαγραφή Εγγραφής</a>
+                <a href="settings.php">Ρυθμίσεις</a>
             </div>
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Home Page</h3>
+        <h3>Αρχική Σελίδα</h3>
         <h1>
-            Welcome to the db1u10 database management website.
-            Here you can view and manage all the information inside the database.<br>
+            Καλωσήρθατε στην ιστοσελίδα διαχείρησης βάσης δεδομένων db1u10.
+            Εδώ μπορείτε να προβάλετε και να επεξεργαστείτε τα δεδομένα της βάσης.<br>
         </h1>
 
-        <div class="menuTitle">NAVIGATION MENU</div>
-        <form action="viewnav.php"><button class="block">View content</button></form>
-        <form action="addnav.php"><button class="block">Add content manually</button></form>
-        <form action="addfilenav.php"><button class="block">Add content from file</button></form>
-        <form action="delnav.php"><button class="block">Delete content manually</button></form>
-        <form action="delfilenav.php"><button class="block">Erase content from file</button></form>
-        <form action="cleardb.php"><button class="block">Clear Database</button></form>
-        <form action="arc.php"><button class="block">Inspect table architecture</button></form>
+        <div class="menuTitle">ΔΙΑΘΕΣΙΜΕΣ ΕΠΙΛΟΓΕΣ</div>
+        <form action="viewnav.php"><button class="block">Προβολή δεδομένων</button></form>
+        <form action="addnav.php"><button class="block">Προσθήκη δεδομένων</button></form>
+        <form action="addfilenav.php"><button class="block">Προσθήκη δεδομένων από αρχείο</button></form>
+        <form action="delnav.php"><button class="block">Διαγραφή δεδομένων</button></form>
+        <form action="cleardb.php"><button class="block">Ρυθμίσεις βάσης δεδομένων</button></form>
     </body>

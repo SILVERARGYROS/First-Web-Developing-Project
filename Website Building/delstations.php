@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 Home Page</title>
+        <title>db1u10 Delete Station Page</title>
     </head>
 
     <body>
@@ -24,10 +24,10 @@
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Delete Station</h3>
+        <h3>Διαγραφή Σταθμού</h3>
         <h1>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-            Please fill all the column values to insert row in table.<br><br>
+            Παρακαλώ συμπληρώστε όλα τα ακόλουθα πεδία.<br><br>
 
             όνομα_μετεωρ_σταθμού:
             <input type="text" name="όνομα_μετεωρ_σταθμού"></input><br>
@@ -38,8 +38,8 @@
             υψόμετρο:
             <input type="number" name="υψόμετρο"></input><br>
 
-            <button type="reset" value="reset" name="resetfields">Clear Fields</button>
-            <input type="submit" value="submit" name="submit"></input>
+            <button type="reset" value="reset" name="resetfields">Καθαρισμός Πεδίων</button>
+            <input type="submit" value="Υποβολή" name="submit"></input>
         </h1>  
         <p style='color: red'>   
         <?php
@@ -62,21 +62,21 @@
 
                     if($rows<1)
                     {
-                        echo "Element you tried to delete doesn't exists!";
+                        echo "Το στοιχείο που επιχειρήσατε να διαγράψετε δεν υπάρχει στη βάση!";
                     }
                     else{
                         $query = "DELETE FROM Μ_Σταθμοί WHERE όνομα_μετεωρ_σταθμού='$a1' AND γεωγ_πλάτος=$a2 AND γεωγ_μήκος=$a3 
                         AND υψόμετρο=$a4;";
                         
                         $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
-                        echo "Element found and deleted successfully.";
+                        echo "Το στοιχείο διαγράφτηκε επιτυχώς.";
                     }
 
                     pg_close($link);
                 }
                 else
                 {
-                    echo "Please fill all areas!\n";
+                    echo "Παρακαλώ συμπληρώστε όλα τα πεδία!\n";
                 }
             }      
             clearstatcache();

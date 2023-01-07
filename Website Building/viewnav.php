@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 Home Page</title>
+        <title>db1u10 View Navigation Page</title>
     </head>
 
     <body>
@@ -13,21 +13,20 @@
         <div class="topnav">
             <a class="button" href="index.php">db1u10</a>
             <div class="topnav-right">
-                <a href="viewnav.php">View</a>
-                <a href="addnav.php">Add Row</a>
-                <a href="addfilenav.php">Add File</a>
-                <a href="delnav.php">Erase Row</a>
-                <a href="delfilenav.php">Erase File</a>
-                <a href="arc.php">Architecture</a>
+                <a href="viewnav.php">Προβολή</a>
+                <a href="addnav.php">Προσθήκη Εγγραφής</a>
+                <a href="addfilenav.php">Προσθήκη Αρχείου</a>
+                <a href="delnav.php">Διαγραφή Εγγραφής</a>
+                <a href="settings.php">Ρυθμίσεις</a>
             </div>
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>View</h3>
+        <h3>Προβολή</h3>
         <h1>
-            Please select which table's contents you would like to view.
+            Παρακαλώ επιλέξτε τι θα θέλατε να προβάλετε.
         </h1>
-        <div class="menuTitle">AVAILABLE TABLES</div>
+        <div class="menuTitle">ΔΙΑΘΕΣΙΜΕΣ ΕΠΙΛΟΓΕΣ</div>
         <form action="viewfires.php"><button class="block">Δασικές Πυρκαγιές</button></form>
         <form action="viewlocations.php"><button class="block">Δήμοι</button></form>
         <form action="viewstations.php"><button class="block">Μ. Σταθμοί</button></form>

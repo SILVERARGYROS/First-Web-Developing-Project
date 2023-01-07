@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 Home Page</title>
+        <title>db1u10 Select File Page</title>
     </head>
 
     <body>
@@ -13,24 +13,23 @@
         <div class="topnav">
             <a class="button" href="index.php">db1u10</a>
             <div class="topnav-right">
-                <a href="viewnav.php">View</a>
-                <a href="addnav.php">Add Row</a>
-                <a href="addfilenav.php">Add File</a>
-                <a href="delnav.php">Erase Row</a>
-                <a href="delfilenav.php">Erase File</a>
-                <a href="arc.php">Architecture</a>
+                <a href="viewnav.php">Προβολή</a>
+                <a href="addnav.php">Προσθήκη Εγγραφής</a>
+                <a href="addfilenav.php">Προσθήκη Αρχείου</a>
+                <a href="delnav.php">Διαγραφή Εγγραφής</a>
+                <a href="settings.php">Ρυθμίσεις</a>
             </div>
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Add File</h3>
+        <h3>Προσθήκη Αρχείου</h3>
         <h1>
-            Please select in which table you want to add content to,<br>using a '.csv' file as a source of input.
+            Παρακαλώ επιλέξτε ποιού αρχείου τα δεδομένα θέλετε να προσθέσετε στη βάση.
         </h1>
-        <div class="menuTitle">AVAILABLE TABLES</div>
-        <form action="addfilefires.php"><button class="block">Δασικές Πυρκαγιές</button></form>
-        <form action="addfilelocations.php"><button class="block">Δήμοι</button></form>
-        <form action="addfilestations.php"><button class="block">Μ. Σταθμοί</button></form>
-        <form action="addfiledata.php"><button class="block">Μ. Δεδομένα</button></form>
+        <div class="menuTitle">ΔΙΑΘΕΣΙΜΑ ΑΡΧΕΙΑ</div>
+        <form action="addfilefires.php"><button class="block">fire_data.csv</button></form>
+        <form action="addfilelocations.php"><button class="block">locations_data.csv</button></form>
+        <form action="addfilestations.php"><button class="block">stations_list.csv</button></form>
+        <form action="addfiledata.php"><button class="block">meteo_data.csv</button></form>
     </body>
 </html>
