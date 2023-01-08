@@ -42,13 +42,7 @@
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
                         or die ("Error in connections" . pg_last_error());
 
-                    $query = "truncate table Δασικές_Πυρκαγιές cascade;
-                    truncate table Δήμοι cascade;
-                    truncate table Μ_Σταθμοί cascade;
-                    truncate table Μ_Δεδομένα cascade;
-                    truncate table ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ;
-                    truncate table ΕΚΔΗΛΩΘΗΚΑΝ;
-                    truncate table ΚΑΤΑΓΡΑΦΕΣ;";
+                    $query = "ALTER SEQUENCE Μ_Δεδομένα_id_seq RESTART;";
                     
                     $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
                     echo "<p style='color: red'> Επιτυχής επαναφορά αλληλουχίας.</p>";
