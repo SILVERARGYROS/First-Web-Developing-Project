@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Navigation Page</title>
+        <title>db1u10 Reset Sequence Navigation Page</title>
     </head>
 
     <body>
@@ -22,17 +22,14 @@
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Προβολή</h3>
+        <h3>Επαναφορά Αλληλουχιών Αρίθμησης</h3>
         <h1>
-            Παρακαλώ επιλέξτε τι θα θέλατε να προβάλετε.
+            Παρακαλώ επιλέξτε τίνως αριθμητική αλληλουχία θα θέλατε να επαναφέρετε.
         </h1>
         <div class="menuTitle">ΔΙΑΘΕΣΙΜΕΣ ΕΠΙΛΟΓΕΣ</div>
-        <form action="viewfires.php"><button class="block">Δασικές Πυρκαγιές</button></form>
-        <form action="viewlocations.php"><button class="block">Δήμοι</button></form>
-        <form action="viewstations.php"><button class="block">Μ. Σταθμοί</button></form>
-        <form action="viewdata.php"><button class="block">Μ. Δεδομένα</button></form>
-        <form action="viewreportstations.php"><button class="block">ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ</button></form>
-        <form action="viewoccurances.php"><button class="block">ΕΚΔΗΛΩΘΗΚΑΝ</button></form>
-        <form action="viewrecordings.php"><button class="block">ΚΑΤΑΓΡΑΦΕΣ</button></form>
+        <form action="resetseqfires.php"><button class="block">Δασικές Πυρκαγιές</button></form>
+        <form action="resetseqlocations.php"><button class="block">Δήμοι</button></form>
+        <form action="resetseqstations.php"><button class="block">Μ. Σταθμοί</button></form>
+        <form action="resetseqdata.php"><button class="block">Μ. Δεδομένα</button></form>
     </body>
 </html>

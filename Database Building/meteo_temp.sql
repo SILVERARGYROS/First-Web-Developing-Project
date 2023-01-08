@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS meteo_temp (
     station_name varchar(150),
-    date varchar(20),
+    date date,
     avg_temp_C float,
     max_temp_C float,
     min_temp_C float,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS meteo_temp (
     min_atm_hPa float,
     rain_mm float,
     wind_speed_kmh float,
-    wind_dir varchar(3),
+    wind_dir varchar(20),
     wind_gust_kmh float
 );
 

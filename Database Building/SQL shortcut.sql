@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS locations_temp (
 
 CREATE TABLE IF NOT EXISTS meteo_temp (
     station_name varchar(150),
-    date varchar(20),
+    date date,
     avg_temp_C float,
     max_temp_C float,
     min_temp_C float,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS meteo_temp (
     min_atm_hPa float,
     rain_mm float,
     wind_speed_kmh float,
-    wind_dir varchar(3),
+    wind_dir varchar(20),
     wind_gust_kmh float
 );
 
@@ -77,10 +77,10 @@ CREATE TABLE IF NOT EXISTS stations_temp (
 CREATE TABLE IF NOT EXISTS Δασικές_Πυρκαγιές (
     id SERIAL,
     όνομα_πυρ_σώματος VARCHAR(150),
-    ημερομ_έναρξης VARCHAR(20),
-    ώρα_έναρξης VARCHAR(20),
-    ημερομ_κατασβ VARCHAR(20),
-    ώρα_κατασβ VARCHAR(20),
+    ημερομ_έναρξης date,
+    ώρα_έναρξης time,
+    ημερομ_κατασβ date,
+    ώρα_κατασβ time,
     καμμένη_έκταση FLOAT,
     πλήθος_προσωπικού INTEGER,
     πλήθος_οχημάτων INTEGER,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS Μ_Σταθμοί (
 
 CREATE TABLE IF NOT EXISTS Μ_Δεδομένα (
     id SERIAL,
-    ημερομηνία VARCHAR(20),
+    ημερομηνία date,
     μέση_θερμοκρασία FLOAT,
     μέγιστη_θερμοκρασία FLOAT,
     ελάχιστη_θερμοκρασία FLOAT,
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS Μ_Δεδομένα (
     ελάχιστη_ατμοσφ_πίεση FLOAT,
     ημερήσια_βροχόπτωση FLOAT,
     μέση_ταχύτητα_ανέμου FLOAT,
-    διευθ_ανέμου VARCHAR(3),
+    διευθ_ανέμου VARCHAR(20),
     μέγιστη_ριπή_ανέμου FLOAT,
     PRIMARY KEY (id)
 );
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS ΕΚΔΗΛΩΘΗΚΑΝ (
     FOREIGN KEY(idΔΠ) references Δασικές_Πυρκαγιές(id),
     FOREIGN KEY(idΔήμοι) references Δήμοι(id)
 );
-
+    
 insert into ΕΚΔΗΛΩΘΗΚΑΝ (idΔΠ, idΔήμοι)
 select distinct Δασικές_Πυρκαγιές.id, Δήμοι.id
 from Δασικές_Πυρκαγιές, Δήμοι, fire_temp

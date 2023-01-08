@@ -24,7 +24,7 @@
 
         <h3>Αρχική Σελίδα</h3>
         <h1>
-            Καλωσήρθατε στην ιστοσελίδα διαχείρησης βάσης δεδομένων db1u10.
+            Καλωσήρθατε στην ιστοσελίδα διαχείρησης βάσης δεδομένων db1u10.<br>
             Εδώ μπορείτε να προβάλετε και να επεξεργαστείτε τα δεδομένα της βάσης.<br>
         </h1>
 
@@ -33,5 +33,6 @@
         <form action="addnav.php"><button class="block">Προσθήκη δεδομένων</button></form>
         <form action="addfilenav.php"><button class="block">Προσθήκη δεδομένων από αρχείο</button></form>
         <form action="delnav.php"><button class="block">Διαγραφή δεδομένων</button></form>
-        <form action="cleardb.php"><button class="block">Ρυθμίσεις βάσης δεδομένων</button></form>
+        <form action="settings.php"><button class="block">Ρυθμίσεις βάσης δεδομένων</button></form>
     </body>
+</html>

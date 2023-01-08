@@ -4,7 +4,7 @@ AND ώρα_κατασβ='1' AND καμμένη_έκταση=1 AND πλήθος_�
 AND πλήθος_οχημάτων=1 AND πλήθος_εναέριων_μέσων=1
         ;
 
-truncate table fire_temp;
+truncate table if exists fire_temp;
 truncate table locations_temp;
 truncate table meteo_temp;
 truncate table stations_temp;

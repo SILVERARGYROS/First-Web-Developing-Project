@@ -15,7 +15,7 @@ h1, h2, h3 {
 
 h1 {    
   font: 200% DejaVu Sans Mono;
-  width: 580pt;     
+  width: max-content;     
   background: black;
   color: lightgrey; 
 }

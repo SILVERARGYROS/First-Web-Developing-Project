@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Μ_Δεδομένα (
     id SERIAL,
-    ημερομηνία VARCHAR(20),
+    ημερομηνία date,
     μέση_θερμοκρασία FLOAT,
     μέγιστη_θερμοκρασία FLOAT,
     ελάχιστη_θερμοκρασία FLOAT,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Μ_Δεδομένα (
     ελάχιστη_ατμοσφ_πίεση FLOAT,
     ημερήσια_βροχόπτωση FLOAT,
     μέση_ταχύτητα_ανέμου FLOAT,
-    διευθ_ανέμου VARCHAR(3),
+    διευθ_ανέμου VARCHAR(20),
     μέγιστη_ριπή_ανέμου FLOAT,
     PRIMARY KEY (id)
 );
