@@ -43,13 +43,18 @@
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
                         or die ("Error in connections" . pg_last_error());
 
-                    $query = "drop table Δασικές_Πυρκαγιές cascade;
-                    drop table Δήμοι cascade;
-                    drop table Μ_Σταθμοί cascade;
-                    drop table Μ_Δεδομένα cascade;
-                    drop table ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ;
-                    drop table ΕΚΔΗΛΩΘΗΚΑΝ;
-                    drop table ΚΑΤΑΓΡΑΦΕΣ;
+                    $query = "drop table if exists fire_temp;
+                    drop table if exists locations_temp;
+                    drop table if exists meteo_temp;
+                    drop table if exists stations_temp;
+                    drop table if exists Δασικές_Πυρκαγιές cascade;
+                    drop table if exists Δήμοι cascade;
+                    drop table if exists Μ_Σταθμοί cascade;
+                    drop table if exists Μ_Δεδομένα cascade;
+                    drop table if exists ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ;
+                    drop table if exists ΕΚΔΗΛΩΘΗΚΑΝ;
+                    drop table if exists ΚΑΤΑΓΡΑΦΕΣ;
+                    
                     CREATE TABLE IF NOT EXISTS Δασικές_Πυρκαγιές (
                         id SERIAL,
                         όνομα_πυρ_σώματος VARCHAR(150),

@@ -1,0 +1,1 @@
+\copy meteo_temp FROM '/home/Data/2022-23/meteo_data.csv' DELIMITER ';' csv header NULL AS 'NULL';

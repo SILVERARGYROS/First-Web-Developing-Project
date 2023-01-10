@@ -93,13 +93,15 @@ table {
   float: left;
   background-color: #333;
   color: lightgrey;
+  border:#000;
   border-color: #000;
-  border-width: thin;
+  border-width: thick;
   text-align: center;
   vertical-align: middle;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  cursor: pointer;
 }
 
 /* Change the color of links on hover */
@@ -112,6 +114,8 @@ table {
 .topnav a:active {
   background-color: #666;
   color: lightgrey;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 /* Right-aligned section inside the top navigation */

@@ -31,8 +31,8 @@
         <div class="menuTitle">ΔΙΑΘΕΣΙΜΕΣ ΕΠΙΛΟΓΕΣ</div>
         <form action="viewnav.php"><button class="block">Προβολή δεδομένων</button></form>
         <form action="addnav.php"><button class="block">Προσθήκη δεδομένων</button></form>
-        <form action="addfilenav.php"><button class="block">Προσθήκη δεδομένων από αρχείο</button></form>
         <form action="delnav.php"><button class="block">Διαγραφή δεδομένων</button></form>
+        <form action="addfilenav.php"><button class="block">Προσθήκη δεδομένων από αρχείο</button></form>
         <form action="settings.php"><button class="block">Ρυθμίσεις βάσης δεδομένων</button></form>
     </body>
 </html>

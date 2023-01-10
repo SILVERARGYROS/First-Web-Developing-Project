@@ -23,9 +23,9 @@
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Προσθήκη αρχείου "fire.csv"</h3>
+        <h3>Προσθήκη αρχείου "fire_data.csv"</h3>
         <h1>
-            <p style='color: red'>
+            <p style="color: red; width: 700pt">
                 <?php            
                 $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
                 or die("Error in connection!");
@@ -44,23 +44,19 @@
                             εναέρια integer
                         );";
                 $result = pg_query($link, $query) or die("Error executing query: $query");
-                //psql -h localhost -U db1u10 -d db1u10 -W k2ts1k0. -c '\\copy fire_temp FROM \'/home/Data/2022-23/fire_data.csv\' DELIMITER \';\' csv header NULL AS \'NULL\';'
 
+                $output = exec('./copy_fires/copy_fires.sh') or die("Error executing exec command!!!");
+                echo "<br>$output<br>";
 
-                $command = "psql -h localhost -U db1u10 -d db1u10 -W k2ts1k0. -c '\\copy fire_temp FROM \'/home/Data/2022-23/fire_data.csv\' DELIMITER \';\' csv header NULL AS \'NULL\';'";
-                exec($command, $output, $return_var);
-                (print_r($return_var));
-                (print_r($output));
-                /*
                 $query = "insert into Δασικές_Πυρκαγιές (όνομα_πυρ_σώματος, ημερομ_έναρξης, ώρα_έναρξης, ημερομ_κατασβ, ώρα_κατασβ, καμμένη_έκταση, πλήθος_προσωπικού, πλήθος_οχημάτων, πλήθος_εναέριων_μέσων)
                 select τμήμα, ημερομηνία_έναρξης, ώρα_έναρξης, ημερομηνία_κατάσβεσης, ώρα_κατάσβεσης, καμμένη_έκταση_στρ, προσωπικό, οχήματα, εναέρια
                 from fire_temp;
                 drop table fire_temp;";
                 
                 $result = pg_query($link, $query) or die("Error executing query: $query");
-
-                $result = pg_query($link, $query) or die("Error executing query: $query");
+                /*
                 */
+                echo "File loaded successfully.";
                 pg_close($link);
                 clearstatcache();
                 ?>
