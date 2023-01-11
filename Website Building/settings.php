@@ -30,5 +30,6 @@
         <form action="cleardb.php"><button class="block">Εκκαθάριση Βάσης</button></form>
         <form action="resetseqnav.php"><button class="block">Επαναφορά Αλληλουχιών Αρίθμησης Εγγραφών</button></form>
         <form action="rebuilddb.php"><button class="block">Ανοικοδόμιση Βάσης</button></form>
+        <form action="constructdb.php"><button class="block">Ανοικοδόμιση Βάσης Με Εισαγωγή Αρχείων Και Συσχετίσεων</button></form>
     </body>
 </html>

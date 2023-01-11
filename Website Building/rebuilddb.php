@@ -130,7 +130,7 @@
                     );";
                     
                     $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
-                    echo "<p style='color: red'> Η βάση καθαρίστηκε επιτυχώς.</p>";
+                    echo "<p style='color: red'> Η βάση ανοικοδομήθηκε επιτυχώς.</p>";
 
                     pg_close($link);
                 
