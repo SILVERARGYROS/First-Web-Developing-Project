@@ -40,11 +40,11 @@
                 if(isset($_GET["submit"]))
                 {
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία Σύνδεσης!");
 
                     $query = "truncate table ΕΚΔΗΛΩΘΗΚΑΝ;";
                     
-                    $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                    $result = pg_query($link, $query) or die("Αποτυχία εκκαθάρισης σχέσης!"); 
                     echo "<p style='color: red'> Η σχέση καθαρίστηκε επιτυχώς.</p>";
 
                     pg_close($link);

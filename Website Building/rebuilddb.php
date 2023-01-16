@@ -41,7 +41,7 @@
                 if(isset($_GET["submit"]))
                 {
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία Σύνδεσης!");
 
                     $query = "drop table if exists fire_temp;
                     drop table if exists locations_temp;
@@ -129,7 +129,7 @@
                         FOREIGN KEY(idΜΔ) references Μ_Δεδομένα(id)
                     );";
                     
-                    $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                    $result = pg_query($link, $query) or die("Αποτυχία Ανοικοδόμισης Βάσης!"); 
                     echo "<p style='color: red'> Η βάση ανοικοδομήθηκε επιτυχώς.</p>";
 
                     pg_close($link);

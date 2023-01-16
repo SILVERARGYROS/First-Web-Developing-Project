@@ -55,7 +55,7 @@
                 if($a1 && $a2 && $a3 && $a4 && $a5) {  
 
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία Σύνδεσης!");
 
                     $result = pg_query($link, "SELECT * FROM Δήμοι WHERE όνομα_περιφέριας='$a1' AND όνομα_νομού='$a2' AND όνομα_Δήμου='$a3' 
                     AND γεωγ_πλάτος=$a4 AND γεωγ_μήκος=$a5;");
@@ -69,7 +69,7 @@
                     else{
                         $query = "INSERT INTO Δήμοι(id, όνομα_περιφέριας, όνομα_νομού, όνομα_Δήμου, γεωγ_πλάτος, γεωγ_μήκος) VALUES (default,'$a1','$a2','$a3',$a4,$a5);";
                         
-                        $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                        $result = pg_query($link, $query) or die("Αποτυχία προσθήκης στοιχείου!"); 
                         echo "Το στοιχείο προστέθηκε επιτυχώς.";
                     }
 

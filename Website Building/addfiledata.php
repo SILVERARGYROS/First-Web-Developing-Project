@@ -28,7 +28,7 @@
             <p style="color: red; width: 700pt">
                 <?php            
                 $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                or die("Error in connection!");
+                or die("Απουχία Σύνδεσης!");
 
                 $query="CREATE TABLE IF NOT EXISTS meteo_temp (
                     station_name varchar(150),
@@ -47,7 +47,7 @@
                     wind_dir varchar(20),
                     wind_gust_kmh float
                 );";
-                $result = pg_query($link, $query) or die("Error executing query: $query");
+                $result = pg_query($link, $query) or die("Αποτυχία φόρτωσης αρχείου!\n");
 
                 $output = exec('./copy_data/copy_data.sh') or die("Error executing exec command!!!");
                 echo "<br>$output<br>";
@@ -57,10 +57,10 @@
                 from meteo_temp;
                 drop table meteo_temp;";
                 
-                $result = pg_query($link, $query) or die("Error executing query: $query");
+                $result = pg_query($link, $query) or die("Αποτυχία φόρτωσης αρχείου!\n");
                 /*
                 */
-                echo "File loaded successfully.";
+                echo "Το αρχείο φορτώθηκε επιτυχώς!";
                 pg_close($link);
                 clearstatcache();
                 ?>

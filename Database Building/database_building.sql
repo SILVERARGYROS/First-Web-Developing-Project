@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS stations_temp (
 
 \copy stations_temp FROM '/home/Data/2022-23/stations_list.csv' DELIMITER ';' csv header NULL AS 'NULL';
 
---Builds final tables
+--Builds final tables and relation tables
 
 CREATE TABLE IF NOT EXISTS Δασικές_Πυρκαγιές (
     id SERIAL,
@@ -127,6 +127,27 @@ CREATE TABLE IF NOT EXISTS Μ_Δεδομένα (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ (
+    idΜΣ INTEGER,
+	idΔήμοι INTEGER,
+	FOREIGN KEY(idΜΣ) references Μ_Σταθμοί(id),
+	FOREIGN KEY(idΔήμοι) references Δήμοι(id)
+);
+
+CREATE TABLE IF NOT EXISTS ΕΚΔΗΛΩΘΗΚΑΝ (
+    idΔΠ INTEGER,
+    idΔήμοι INTEGER,
+    FOREIGN KEY(idΔΠ) references Δασικές_Πυρκαγιές(id),
+    FOREIGN KEY(idΔήμοι) references Δήμοι(id)
+);
+
+CREATE TABLE IF NOT EXISTS ΚΑΤΑΓΡΑΦΕΣ (
+	idΜΣ INTEGER,
+	idΜΔ INTEGER,
+	FOREIGN KEY(idΜΣ) references Μ_Σταθμοί(id),
+	FOREIGN KEY(idΜΔ) references Μ_Δεδομένα(id)
+);
+
 --fills final tables with data from the temporary tables
 
 insert into Δασικές_Πυρκαγιές (όνομα_πυρ_σώματος, ημερομ_έναρξης, ώρα_έναρξης, ημερομ_κατασβ, ώρα_κατασβ, καμμένη_έκταση, πλήθος_προσωπικού, πλήθος_οχημάτων, πλήθος_εναέριων_μέσων)
@@ -145,44 +166,47 @@ insert into Μ_Δεδομένα (ημερομηνία, μέση_θερμοκρα
 select date, avg_temp_C, max_temp_C, min_temp_C, avg_hum_perc, max_hum_perc, min_hum_perc, avg_atm_hPa, max_atm_hPa, min_atm_hPa, rain_mm, wind_speed_kmh, wind_dir, wind_gust_kmh
 from meteo_temp;
 
---Builds and fills the relation tables, which connect the basic final tables
-
-CREATE TABLE IF NOT EXISTS ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ (
-    idΜΣ INTEGER,
-	idΔήμοι INTEGER,
-	FOREIGN KEY(idΜΣ) references Μ_Σταθμοί(id),
-	FOREIGN KEY(idΔήμοι) references Δήμοι(id)
-);
+--fills the relation tables
 
 insert into ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ (idΜΣ, idΔήμοι)
 select distinct Μ_Σταθμοί.id, Δήμοι.id
 from locations_temp, Δήμοι, Μ_Σταθμοί
 WHERE locations_temp.δήμος = Δήμοι.όνομα_Δήμου
 AND locations_temp.station_of_reference = Μ_Σταθμοί.όνομα_μετεωρ_σταθμού;
-
-CREATE TABLE IF NOT EXISTS ΕΚΔΗΛΩΘΗΚΑΝ (
-    idΔΠ INTEGER,
-    idΔήμοι INTEGER,
-    FOREIGN KEY(idΔΠ) references Δασικές_Πυρκαγιές(id),
-    FOREIGN KEY(idΔήμοι) references Δήμοι(id)
-);
     
 insert into ΕΚΔΗΛΩΘΗΚΑΝ (idΔΠ, idΔήμοι)
 select distinct Δασικές_Πυρκαγιές.id, Δήμοι.id
 from Δασικές_Πυρκαγιές, Δήμοι, fire_temp
-WHERE fire_temp.δήμος = Δήμοι.όνομα_Δήμου AND Δασικές_Πυρκαγιές.όνομα_πυρ_σώματος = fire_temp.τμήμα AND Δασικές_Πυρκαγιές.ημερομ_έναρξης = fire_temp.ημερομηνία_έναρξης AND Δασικές_Πυρκαγιές.ώρα_έναρξης = fire_temp.ώρα_έναρξης AND Δασικές_Πυρκαγιές.ημερομ_κατασβ = fire_temp.ημερομηνία_κατάσβεσης AND Δασικές_Πυρκαγιές.ώρα_κατασβ = fire_temp.ώρα_κατάσβεσης AND Δασικές_Πυρκαγιές.καμμένη_έκταση = fire_temp.καμμένη_έκταση_στρ AND Δασικές_Πυρκαγιές.πλήθος_προσωπικού = fire_temp.προσωπικό AND Δασικές_Πυρκαγιές.πλήθος_οχημάτων = fire_temp.οχήματα AND Δασικές_Πυρκαγιές.πλήθος_εναέριων_μέσων = fire_temp.εναέρια;
-
-CREATE TABLE IF NOT EXISTS ΚΑΤΑΓΡΑΦΕΣ (
-	idΜΣ INTEGER,
-	idΜΔ INTEGER,
-	FOREIGN KEY(idΜΣ) references Μ_Σταθμοί(id),
-	FOREIGN KEY(idΜΔ) references Μ_Δεδομένα(id)
-);
+WHERE fire_temp.δήμος = Δήμοι.όνομα_Δήμου 
+AND Δασικές_Πυρκαγιές.όνομα_πυρ_σώματος = fire_temp.τμήμα 
+AND Δασικές_Πυρκαγιές.ημερομ_έναρξης = fire_temp.ημερομηνία_έναρξης 
+AND Δασικές_Πυρκαγιές.ώρα_έναρξης = fire_temp.ώρα_έναρξης 
+AND Δασικές_Πυρκαγιές.ημερομ_κατασβ = fire_temp.ημερομηνία_κατάσβεσης 
+AND Δασικές_Πυρκαγιές.ώρα_κατασβ = fire_temp.ώρα_κατάσβεσης 
+AND Δασικές_Πυρκαγιές.καμμένη_έκταση = fire_temp.καμμένη_έκταση_στρ 
+AND Δασικές_Πυρκαγιές.πλήθος_προσωπικού = fire_temp.προσωπικό 
+AND Δασικές_Πυρκαγιές.πλήθος_οχημάτων = fire_temp.οχήματα 
+AND Δασικές_Πυρκαγιές.πλήθος_εναέριων_μέσων = fire_temp.εναέρια;
 
 insert into ΚΑΤΑΓΡΑΦΕΣ (idΜΣ, idΜΔ)
 select distinct Μ_Σταθμοί.id, Μ_Δεδομένα.id
 from Μ_Σταθμοί, Μ_Δεδομένα, meteo_temp
-WHERE Μ_Σταθμοί.όνομα_μετεωρ_σταθμού = meteo_temp.station_name AND Μ_Δεδομένα.ημερομηνία = meteo_temp.date AND (Μ_Δεδομένα.μέση_θερμοκρασία = meteo_temp.avg_temp_C OR (Μ_Δεδομένα.μέση_θερμοκρασία IS NULL AND meteo_temp.avg_temp_C IS NULL)) AND (Μ_Δεδομένα.μέγιστη_θερμοκρασία = meteo_temp.max_temp_C OR (Μ_Δεδομένα.μέγιστη_θερμοκρασία IS NULL AND meteo_temp.max_temp_C IS NULL)) AND (Μ_Δεδομένα.ελάχιστη_θερμοκρασία = meteo_temp.min_temp_C OR (Μ_Δεδομένα.ελάχιστη_θερμοκρασία IS NULL AND meteo_temp.min_temp_C IS NULL)) AND (Μ_Δεδομένα.μέση_υγρασία = meteo_temp.avg_hum_perc OR (Μ_Δεδομένα.μέση_υγρασία IS NULL AND meteo_temp.avg_hum_perc IS NULL)) AND (Μ_Δεδομένα.μέγιστη_υγρασία = meteo_temp.max_hum_perc OR (Μ_Δεδομένα.μέγιστη_υγρασία IS NULL AND meteo_temp.max_hum_perc IS NULL)) AND (Μ_Δεδομένα.ελάχιστη_υγρασία = meteo_temp.min_hum_perc OR (Μ_Δεδομένα.ελάχιστη_υγρασία IS NULL AND meteo_temp.min_hum_perc IS NULL)) AND (Μ_Δεδομένα.μέση_ατμοσφ_πίεση = meteo_temp.avg_atm_hPa OR (Μ_Δεδομένα.μέση_ατμοσφ_πίεση IS NULL AND meteo_temp.avg_atm_hPa IS NULL)) AND (Μ_Δεδομένα.μέγιστη_ατμοσφ_πίεση = meteo_temp.max_atm_hPa OR (Μ_Δεδομένα.μέγιστη_ατμοσφ_πίεση IS NULL AND meteo_temp.max_atm_hPa IS NULL)) AND (Μ_Δεδομένα.ελάχιστη_ατμοσφ_πίεση = meteo_temp.min_atm_hPa OR (Μ_Δεδομένα.ελάχιστη_ατμοσφ_πίεση IS NULL AND meteo_temp.min_atm_hPa IS NULL)) AND (Μ_Δεδομένα.ημερήσια_βροχόπτωση = meteo_temp.rain_mm OR (Μ_Δεδομένα.ημερήσια_βροχόπτωση IS NULL AND meteo_temp.rain_mm IS NULL)) AND (Μ_Δεδομένα.μέση_ταχύτητα_ανέμου = meteo_temp.wind_speed_kmh OR (Μ_Δεδομένα.μέση_ταχύτητα_ανέμου IS NULL AND meteo_temp.wind_speed_kmh IS NULL)) AND (Μ_Δεδομένα.διευθ_ανέμου = meteo_temp.wind_dir OR (Μ_Δεδομένα.διευθ_ανέμου IS NULL AND meteo_temp.wind_dir IS NULL)) AND (Μ_Δεδομένα.μέγιστη_ριπή_ανέμου = meteo_temp.wind_gust_kmh OR (Μ_Δεδομένα.μέγιστη_ριπή_ανέμου IS NULL AND meteo_temp.wind_gust_kmh IS NULL));
+WHERE Μ_Σταθμοί.όνομα_μετεωρ_σταθμού = meteo_temp.station_name AND Μ_Δεδομένα.ημερομηνία = meteo_temp.date 
+AND (Μ_Δεδομένα.μέση_θερμοκρασία = meteo_temp.avg_temp_C OR (Μ_Δεδομένα.μέση_θερμοκρασία IS NULL AND meteo_temp.avg_temp_C IS NULL)) 
+AND (Μ_Δεδομένα.μέγιστη_θερμοκρασία = meteo_temp.max_temp_C OR (Μ_Δεδομένα.μέγιστη_θερμοκρασία IS NULL AND meteo_temp.max_temp_C IS NULL)) 
+AND (Μ_Δεδομένα.ελάχιστη_θερμοκρασία = meteo_temp.min_temp_C OR (Μ_Δεδομένα.ελάχιστη_θερμοκρασία IS NULL AND meteo_temp.min_temp_C IS NULL)) 
+AND (Μ_Δεδομένα.μέση_υγρασία = meteo_temp.avg_hum_perc OR (Μ_Δεδομένα.μέση_υγρασία IS NULL AND meteo_temp.avg_hum_perc IS NULL)) 
+AND (Μ_Δεδομένα.μέγιστη_υγρασία = meteo_temp.max_hum_perc OR (Μ_Δεδομένα.μέγιστη_υγρασία IS NULL AND meteo_temp.max_hum_perc IS NULL)) 
+AND (Μ_Δεδομένα.ελάχιστη_υγρασία = meteo_temp.min_hum_perc OR (Μ_Δεδομένα.ελάχιστη_υγρασία IS NULL AND meteo_temp.min_hum_perc IS NULL)) 
+AND (Μ_Δεδομένα.μέση_ατμοσφ_πίεση = meteo_temp.avg_atm_hPa OR (Μ_Δεδομένα.μέση_ατμοσφ_πίεση IS NULL AND meteo_temp.avg_atm_hPa IS NULL)) 
+AND (Μ_Δεδομένα.μέγιστη_ατμοσφ_πίεση = meteo_temp.max_atm_hPa OR (Μ_Δεδομένα.μέγιστη_ατμοσφ_πίεση IS NULL AND meteo_temp.max_atm_hPa IS NULL)) 
+AND (Μ_Δεδομένα.ελάχιστη_ατμοσφ_πίεση = meteo_temp.min_atm_hPa OR (Μ_Δεδομένα.ελάχιστη_ατμοσφ_πίεση IS NULL AND meteo_temp.min_atm_hPa IS NULL)) 
+AND (Μ_Δεδομένα.ημερήσια_βροχόπτωση = meteo_temp.rain_mm OR (Μ_Δεδομένα.ημερήσια_βροχόπτωση IS NULL AND meteo_temp.rain_mm IS NULL)) 
+AND (Μ_Δεδομένα.μέση_ταχύτητα_ανέμου = meteo_temp.wind_speed_kmh OR (Μ_Δεδομένα.μέση_ταχύτητα_ανέμου IS NULL AND meteo_temp.wind_speed_kmh IS NULL)) 
+AND (Μ_Δεδομένα.διευθ_ανέμου = meteo_temp.wind_dir OR (Μ_Δεδομένα.διευθ_ανέμου IS NULL AND meteo_temp.wind_dir IS NULL)) 
+AND (Μ_Δεδομένα.μέγιστη_ριπή_ανέμου = meteo_temp.wind_gust_kmh OR (Μ_Δεδομένα.μέγιστη_ριπή_ανέμου IS NULL AND meteo_temp.wind_gust_kmh IS NULL));
+
+--Deletes all temporary tables to save space, since they won't be used anymore
 
 drop table if exists fire_temp;
 drop table if exists locations_temp;

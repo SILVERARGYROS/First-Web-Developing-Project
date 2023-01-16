@@ -43,7 +43,7 @@
                 if(isset($_GET["submit"]))
                 {
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία σύνδεσης!");
 
                     $query = "
                     CREATE TABLE IF NOT EXISTS fire_temp (
@@ -94,15 +94,15 @@
                         altitude float
                     );";
 
-                    $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                    $result = pg_query($link, $query) or die("Σφάλμα φόρτωσης Αρχείων!"); 
 
-                    $output = exec('./copy_fires/copy_fires.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_fires/copy_fires.sh') or die("Σφάλμα φόρτωσης Αρχείων!");
 
-                    $output = exec('./copy_locations/copy_locations.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_locations/copy_locations.sh') or die("Σφάλμα φόρτωσης Αρχείων!");
 
-                    $output = exec('./copy_stations/copy_stations.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_stations/copy_stations.sh') or die("Σφάλμα φόρτωσης Αρχείων!");
 
-                    $output = exec('./copy_data/copy_data.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_data/copy_data.sh') or die("Σφάλμα φόρτωσης Αρχείων!");
                     
                     $query = "insert into Δασικές_Πυρκαγιές (όνομα_πυρ_σώματος, ημερομ_έναρξης, ώρα_έναρξης, ημερομ_κατασβ, ώρα_κατασβ, καμμένη_έκταση, πλήθος_προσωπικού, πλήθος_οχημάτων, πλήθος_εναέριων_μέσων)
                     select τμήμα, ημερομηνία_έναρξης, ώρα_έναρξης, ημερομηνία_κατάσβεσης, ώρα_κατάσβεσης, καμμένη_έκταση_στρ, προσωπικό, οχήματα, εναέρια
@@ -141,7 +141,7 @@
                     drop table if exists meteo_temp;
                     drop table if exists stations_temp;";
                     
-                    $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                    $result = pg_query($link, $query) or die("Αποτυχία εισαγωγής δεδομένων!"); 
                     echo "<p style='color: red'> Τα δεδομένα εισάχθηκαν επιτυχώς.</p>";
 
                     pg_close($link);

@@ -41,7 +41,7 @@
                 if(isset($_GET["submit"]))
                 {
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία Σύνδεσης!");
 
                     $query = "truncate table Δασικές_Πυρκαγιές cascade;
                     truncate table Δήμοι cascade;
@@ -51,7 +51,7 @@
                     truncate table ΕΚΔΗΛΩΘΗΚΑΝ;
                     truncate table ΚΑΤΑΓΡΑΦΕΣ;";
                     
-                    $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                    $result = pg_query($link, $query) or die("Σφάλμα εκκαθάρισης Βάσης!"); 
                     echo "<p style='color: red'> Η βάση καθαρίστηκε επιτυχώς.</p>";
 
                     pg_close($link);

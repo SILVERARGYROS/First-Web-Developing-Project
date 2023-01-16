@@ -53,7 +53,7 @@
                 if($a1 && $a2 && $a3 && $a4) {  
 
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία Σύνδεσης!");
 
                     $result = pg_query($link, "SELECT * FROM Μ_Σταθμοί WHERE όνομα_μετεωρ_σταθμού='$a1' AND γεωγ_πλάτος=$a2 AND γεωγ_μήκος=$a3 
                     AND υψόμετρο=$a4;");
@@ -68,7 +68,7 @@
                         $query = "DELETE FROM Μ_Σταθμοί WHERE όνομα_μετεωρ_σταθμού='$a1' AND γεωγ_πλάτος=$a2 AND γεωγ_μήκος=$a3 
                         AND υψόμετρο=$a4;";
                         
-                        $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                        $result = pg_query($link, $query) or die("Αποτυχία διαγραφής στοιχείου!\n"); 
                         echo "Το στοιχείο διαγράφτηκε επιτυχώς.";
                     }
 

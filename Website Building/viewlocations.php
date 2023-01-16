@@ -26,10 +26,10 @@
         <h3>Προβολή: "Δήμοι"</h3>
         <?php
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
-                or die ("Could not connect to server\n");
+                or die ("Αποτυχία Σύνδεσης\n");
 
             $result = pg_query($link, "SELECT * FROM Δήμοι;")
-                or die("Cannot execute query: $query\n");
+                or die("Αποτυχία Προβολής\n");
 
             $numrows = pg_num_rows($result);
         ?>

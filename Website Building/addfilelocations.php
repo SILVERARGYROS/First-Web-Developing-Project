@@ -28,7 +28,7 @@
             <p style="color: red; width: 700pt">
                 <?php            
                 $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                or die("Error in connection!");
+                or die("Απουχία Σύνδεσης!");
 
                 $query="CREATE TABLE IF NOT EXISTS locations_temp (
                     περιφέρεια varchar(150),
@@ -38,7 +38,7 @@
                     longtitude float,
                     station_of_reference varchar(150)
                 );";
-                $result = pg_query($link, $query) or die("Error executing query: $query");
+                $result = pg_query($link, $query) or die("Αποτυχία φόρτωσης αρχείου!\n");
 
                 $output = exec('./copy_locations/copy_locations.sh') or die("Error executing exec command!!!");
                 echo "<br>$output<br>";
@@ -48,10 +48,10 @@
                 from locations_temp;
                 drop table locations_temp;";
                 
-                $result = pg_query($link, $query) or die("Error executing query: $query");
+                $result = pg_query($link, $query) or die("Αποτυχία φόρτωσης αρχείου!\n");
                 /*
                 */
-                echo "File loaded successfully.";
+                echo "Το αρχείο φορτώθηκε επιτυχώς!";
                 pg_close($link);
                 clearstatcache();
                 ?>

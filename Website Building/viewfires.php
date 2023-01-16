@@ -26,10 +26,10 @@
         <h3>Προβολή: "Δασικές Πυρκαγιές"</h3>
         <?php
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
-                or die ("Could not connect to server\n");
+                or die ("Αποτυχία Σύνδεσης\n");
 
             $result = pg_query($link, "SELECT * FROM Δασικές_Πυρκαγιές;")
-                or die("Cannot execute query: $query\n");
+                or die("Αποτυχία Προβολής\n");
 
             $rows = pg_num_rows($result);
         ?>

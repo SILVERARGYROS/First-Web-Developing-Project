@@ -43,7 +43,7 @@
                 if(isset($_GET["submit"]))
                 {
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία Σύνδεσης!");
 
                     $query = "--Deletes all tables, in case we ever need to rebuild the database
 
@@ -109,15 +109,15 @@
                         altitude float
                     );";
 
-                    $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                    $result = pg_query($link, $query) or die("Πρόβλημα ανοικοδόμισης βάσης!"); 
 
-                    $output = exec('./copy_fires/copy_fires.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_fires/copy_fires.sh') or die("Πρόβλημα ανοικοδόμισης βάσης!");
 
-                    $output = exec('./copy_locations/copy_locations.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_locations/copy_locations.sh') or die("Πρόβλημα ανοικοδόμισης βάσης!");
 
-                    $output = exec('./copy_stations/copy_stations.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_stations/copy_stations.sh') or die("Πρόβλημα ανοικοδόμισης βάσης!");
 
-                    $output = exec('./copy_data/copy_data.sh') or die("Error executing exec command!!!");
+                    $output = exec('./copy_data/copy_data.sh') or die("Πρόβλημα ανοικοδόμισης βάσης!");
                     
                     $query = "--Builds final tables
                     
@@ -236,7 +236,7 @@
                     drop table if exists meteo_temp;
                     drop table if exists stations_temp;";
                     
-                    $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                    $result = pg_query($link, $query) or die("Πρόβλημα ανοικοδόμισης βάσης!"); 
                     echo "<p style='color: red'> Η βάση ανοικοδομήθηκε και γέμισε επιτυχώς.</p>";
 
                     pg_close($link);

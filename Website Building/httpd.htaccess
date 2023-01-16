@@ -1,0 +1,5 @@
+AuthName "Add your login credentials"
+AuthType Basic
+AuthUserFile /home/db1u10/public_html/.htpasswd
+AuthGroupFile /home/db1u10/public_html/.htgroup
+require group db1u10

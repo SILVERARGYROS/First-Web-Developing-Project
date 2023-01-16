@@ -67,7 +67,7 @@
                 if($a1 && $a2 && $a3 && $a4 && $a5 && $a6 && $a7 && $a8 && $a9) {  
 
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass")
-                        or die ("Error in connections" . pg_last_error());
+                        or die ("Αποτυχία Σύνδεσης!");
 
                     $result = pg_query($link, "SELECT * FROM Δασικές_Πυρκαγιές WHERE όνομα_πυρ_σώματος='$a1' AND ημερομ_έναρξης='$a2' AND ώρα_έναρξης='$a3' 
                     AND ημερομ_κατασβ='$a4' AND ώρα_κατασβ='$a5' AND καμμένη_έκταση=$a6 AND πλήθος_προσωπικού=$a7 AND πλήθος_οχημάτων=$a8 AND πλήθος_εναέριων_μέσων=$a9;");
@@ -82,7 +82,7 @@
                         $query = "DELETE CASCADE FROM Δασικές_Πυρκαγιές WHERE όνομα_πυρ_σώματος='$a1' AND ημερομ_έναρξης='$a2' AND ώρα_έναρξης='$a3' AND ημερομ_κατασβ='$a4' 
                         AND ώρα_κατασβ='$a5' AND καμμένη_έκταση=$a6 AND πλήθος_προσωπικού=$a7 AND πλήθος_οχημάτων=$a8 AND πλήθος_εναέριων_μέσων=$a9;";
                         
-                        $result = pg_query($link, $query) or die("Error executing query: $query\n" . pg_last_error()); 
+                        $result = pg_query($link, $query) or die("Αποτυχία διαγραφής στοιχείου!\n"); 
                         echo "Το στοιχείο διαγραφτηκε επιτυχώς.";
                     }
 
