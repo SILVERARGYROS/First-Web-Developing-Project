@@ -23,10 +23,10 @@
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Ανοικοδόμιση Βάσης</h3>
+        <h3>Ανοικοδόμηση Βάσης</h3>
         
         <h1>
-            Διαγραφή και ανοικοδόμιση βάσης.<br>
+            Διαγραφή και ανοικοδόμηση βάσης.<br>
             <br>
             <p style='color: red'>
             ΠΡΟΣΟΧΗ: Αυτό θα σβήσει όλα τα δεδομένα μέσα στη βάση και θα επαναφέρει τις ακολουθίες αρίθμησης.<br>
@@ -35,7 +35,7 @@
             </p>
         </h1>
         <p style='color: red'>
-            <form action="<?php $_PHP_SELF ?>" method = "GET"><input class="block" type="submit" value="ΑΝΟΙΚΟΔΟΜΙΣΗ ΒΑΣΗΣ" name="submit"></input>
+            <form action="<?php $_PHP_SELF ?>" method = "GET"><input class="block" type="submit" value="ΑΝΟΙΚΟΔΟΜΗΣΗ ΒΑΣΗΣ" name="submit"></input>
 
             <?php
                 if(isset($_GET["submit"]))
@@ -129,7 +129,7 @@
                         FOREIGN KEY(idΜΔ) references Μ_Δεδομένα(id)
                     );";
                     
-                    $result = pg_query($link, $query) or die("Αποτυχία Ανοικοδόμισης Βάσης!"); 
+                    $result = pg_query($link, $query) or die("Αποτυχία Ανοικοδόμησης Βάσης!"); 
                     echo "<p style='color: red'> Η βάση ανοικοδομήθηκε επιτυχώς.</p>";
 
                     pg_close($link);
