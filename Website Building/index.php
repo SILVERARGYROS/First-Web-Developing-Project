@@ -35,5 +35,6 @@
         <form action="addfilenav.php"><button class="block">Προσθήκη δεδομένων ενός αρχείου</button></form>
         <form action="addallfiles.php"><button class="block">Προσθήκη δεδομένων όλων των αρχείων</button></form>
         <form action="settings.php"><button class="block">Ρυθμίσεις βάσης δεδομένων</button></form>
+        <form action="questions.php"><button class="block">Ζητούμενα Ερωτήματα</button></form>
     </body>
 </html>
