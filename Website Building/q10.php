@@ -31,7 +31,7 @@
             και ημερομηνία Y:
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
                 <input type="text" name="περιφέρεια"></input><br>
-                <input type="text" name="ημερομηνία"></input><br>
+                <input type="date" name="ημερομηνία"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

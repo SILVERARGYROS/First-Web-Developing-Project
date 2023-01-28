@@ -31,8 +31,8 @@
         <h1>Παρακαλώ εισάγεται γεωγραγικό Πλάτος Χ
             και γεωγραφικό μήκος Υ:
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="text" name="πλάτος"></input><br>
-                <input type="text" name="μήκος"></input><br>
+                <input type="number" step=any name="πλάτος"></input><br>
+                <input type="number" step=any name="μήκος"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>
@@ -51,8 +51,8 @@
                     FROM    Δασικές_Πυρκαγιές, Δήμοι, ΕΚΔΗΛΩΘΗΚΑΝ
                     WHERE   ΕΚΔΗΛΩΘΗΚΑΝ.idΔήμοι = Δήμοι.id
                     AND     ΕΚΔΗΛΩΘΗΚΑΝ.idΔΠ = Δασικές_Πυρκαγιές.id
-                    AND     Δήμοι.γεωγ_πλάτος = 38.2456157
-                    AND     Δήμοι.γεωγ_μήκος = 23.771523292513955
+                    AND     Δήμοι.γεωγ_πλάτος = $a1
+                    AND     Δήμοι.γεωγ_μήκος = $a2
                     ORDER BY Δασικές_Πυρκαγιές.καμμένη_έκταση DESC;")
                     or die("Αποτυχία Προβολής\n");
     
