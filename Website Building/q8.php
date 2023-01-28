@@ -33,9 +33,9 @@
         <h1>Παρακαλώ εισάγεται μέγιστη θερμοκρασία Χ:
             μέση υγρασία Y και μέγιστη ριπή ανέμου Ζ:
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="number" name="θερμοκρασία"></input><br>
-                <input type="number" name="υγρασία"></input><br>
-                <input type="number" name="ριπή"></input><br>
+                <input type="number" step=any name="θερμοκρασία"></input><br>
+                <input type="number" step=any name="υγρασία"></input><br>
+                <input type="number" step=any name="ριπή"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>
