@@ -12,14 +12,13 @@
         <?php include 'login.php'?>
         <!--Topbar Navigation Code-->
         <div class="topnav">
-            <a class="button" href="index.php">db1u10</a>
+            <a class="button" href="homePage.php">db1u10</a>
             <div class="topnav-right">
-                <a href="viewnav.php">View</a>
-                <a href="addnav.php">Add Row</a>
-                <a href="addfilenav.php">Add File</a>
-                <a href="delnav.php">Erase Row</a>
-                <a href="delfilenav.php">Erase File</a>
-                <a href="arc.php">Architecture</a>
+                <a href="viewnav.php">Προβολή</a>
+                <a href="addnav.php">Προσθήκη Εγγραφής</a>
+                <a href="delnav.php">Διαγραφή Εγγραφής</a>
+                <a href="addallfiles.php">Προσθήκη Αρχείων</a>
+                <a href="settings.php">Ρυθμίσεις</a>
             </div>
         </div>
         <!--Topbar Navigation Code-->
