@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q10 Page</title>
     </head>
     
     <body>
@@ -28,10 +28,10 @@
         ταχύτητα και τη διεύθυνση του ανέμου, για την ημερομηνία Y</h3>
 
         <h1>Παρακαλώ εισάγεται όνομα περιφέρειας Χ
-            και ημερομηνία Y:
+            και ημερομηνία Y:<br><br>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="text" name="περιφέρεια"></input><br>
-                <input type="date" name="ημερομηνία"></input><br>
+                Περιφέρεια:<input type="text" name="περιφέρεια"></input><br>
+                Ημερομηνία:<input type="date" name="ημερομηνία"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

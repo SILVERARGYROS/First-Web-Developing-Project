@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q5 Page</title>
     </head>
     
     <body>
@@ -29,9 +29,9 @@
         σε οποιοδήποτε όργανο του μετεωρολογικού σταθμού.
         </h3>   
 
-        <h1>Παρακαλώ εισάγεται Χρονιά Χ:
+        <h1>Παρακαλώ εισάγεται Χρονιά Χ:<br><br>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="number" name="Χρονιά"></input><br>
+                Χρονιά:<input type="number" name="Χρονιά"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

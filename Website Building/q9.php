@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q9 Page</title>
     </head>
     
     <body>
@@ -31,13 +31,13 @@
 
         <h1>Παρακαλώ εισάγεται όνομα σταθμού Χ 
             χρονική περίοδο x1 εώς x2
-            και περίοδο εξαίρεσης y1 εώς y2:
+            και περίοδο εξαίρεσης y1 εώς y2:<br><br>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="text" name="x"></input><br>
-                <input type="date" name="x1"></input><br>
-                <input type="date" name="x2"></input><br>
-                <input type="date" name="y1"></input><br>
-                <input type="date" name="y2"></input><br>
+                Όνομα Σταθμού:<input type="text" name="x"></input><br>
+                Ημ. Αρχής #1: <input type="date" name="x1"></input><br>
+                Ημ. Τέλους #1:<input type="date" name="x2"></input><br>
+                Ημ. Αρχής #2: <input type="date" name="y1"></input><br>
+                Ημ. Τέλους #2:<input type="date" name="y2"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q3 Page</title>
     </head>
     
     <body>
@@ -26,9 +26,9 @@
         <h3>Ερώτημα Q3:<br>
         Εμφανίστε όλα τα δεδομένα των δασικών πυρκαγιών που εκδηλώθηκαν στον δήμο X, με φθίνουσα σειρά βάσει της καμμένης έκτασης σε στρέμματα.</h3>
 
-        <h1>Παρακαλώ εισάγεται Δήμο Χ:
+        <h1>Παρακαλώ εισάγεται Δήμο Χ:<br><br>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="text" name="Δήμος"></input><br>
+                Δήμος:<input type="text" name="Δήμος"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

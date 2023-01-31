@@ -32,11 +32,11 @@
             όνομα_μετεωρ_σταθμού:
             <input type="text" name="όνομα_μετεωρ_σταθμού"></input><br>
             γεωγ_πλάτος:
-            <input type="number" name="γεωγ_πλάτος"></input><br>
+            <input type="number" step=any name="γεωγ_πλάτος"></input><br>
             γεωγ_μήκος:
-            <input type="number" name="γεωγ_μήκος"></input><br>
+            <input type="number" step=any name="γεωγ_μήκος"></input><br>
             υψόμετρο:
-            <input type="number" name="υψόμετρο"></input><br>
+            <input type="number" step=any name="υψόμετρο"></input><br>
 
             <button type="reset" value="reset" name="resetfields">Καθαρισμός Πεδίων</button>
             <input type="submit" value="Υποβολή" name="submit"></input>

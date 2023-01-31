@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q12 Page</title>
     </head>
     
     <body>
@@ -23,16 +23,18 @@
         </div>
         <!--Topbar Navigation Code-->
 
-        <h3>Ερώτημα Q3:<br>
+        <h3>Ερώτημα Q12:<br>
         Παρουσιάστε τα στοιχεία των δασικών πυρκαγιών που εκδηλώθηκαν στο ορθογώνιο που
         ορίζεται από τις συντεταγμένες της πόλης X και συντεταγμένες της πόλης Y, με φθίνουσα
         σειρά βάσει των καμμένων δασικών εκτάσεων.</h3>
 
-        <h1>Παρακαλώ εισάγεται γεωγραγικό Πλάτος Χ
-            και γεωγραφικό μήκος Υ:
+        <h1>Παρακαλώ εισάγεται γεωγραγικό πλάτος και μήκος Χ
+            και γεωγραφικό πλάτος και μήκος Υ:<br><br>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="number" step=any name="πλάτος"></input><br>
-                <input type="number" step=any name="μήκος"></input><br>
+                πλάτος Χ:<input type="number" step=any name="πλάτος1"></input><br>
+                μήκος Χ: <input type="number" step=any name="μήκος1"></input><br>
+                πλάτος Υ:<input type="number" step=any name="πλάτος2"></input><br>
+                μήκος Υ: <input type="number" step=any name="μήκος2"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>
@@ -40,9 +42,11 @@
         <?php
             if(isset($_GET["submit"]))
             {
-                $a1 = $_GET['πλάτος'];
-                $a2 = $_GET['μήκος'];
-                if($a1 and $a2)
+                $a1 = $_GET['πλάτος1'];
+                $a2 = $_GET['μήκος1'];
+                $a3 = $_GET['πλάτος2'];
+                $a4 = $_GET['μήκος2'];
+                if($a1 and $a2 and $a3 and $a4)
                 {
                     $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
                         or die ("Αποτυχία Σύνδεσης\n");
@@ -51,8 +55,14 @@
                     FROM    Δασικές_Πυρκαγιές, Δήμοι, ΕΚΔΗΛΩΘΗΚΑΝ
                     WHERE   ΕΚΔΗΛΩΘΗΚΑΝ.idΔήμοι = Δήμοι.id
                     AND     ΕΚΔΗΛΩΘΗΚΑΝ.idΔΠ = Δασικές_Πυρκαγιές.id
-                    AND     Δήμοι.γεωγ_πλάτος = $a1
-                    AND     Δήμοι.γεωγ_μήκος = $a2
+                    AND     ((Δήμοι.γεωγ_πλάτος >= $a1
+                    AND     Δήμοι.γεωγ_πλάτος <= $a3)
+                    OR      (Δήμοι.γεωγ_πλάτος <= $a1
+                    AND     Δήμοι.γεωγ_πλάτος >= $a3))
+                    AND     ((Δήμοι.γεωγ_μήκος >= $a2
+                    AND     Δήμοι.γεωγ_μήκος <= $a4)
+                    OR      (Δήμοι.γεωγ_μήκος <= $a2
+                    AND     Δήμοι.γεωγ_μήκος >= $a4))
                     ORDER BY Δασικές_Πυρκαγιές.καμμένη_έκταση DESC;")
                     or die("Αποτυχία Προβολής\n");
     
@@ -80,9 +90,11 @@
             <?php
                 if(isset($_GET["submit"]))
                 {
-                    $a1 = $_GET['πλάτος'];
-                    $a2 = $_GET['μήκος'];
-                    if($a1 and $a2)
+                    $a1 = $_GET['πλάτος1'];
+                    $a2 = $_GET['μήκος1'];
+                    $a3 = $_GET['πλάτος2'];
+                    $a4 = $_GET['μήκος2'];
+                    if($a1 and $a2 and $a3 and $a4)
                     {
                         // Loop on rows in the result set.
                         for($ri = 0; $ri < $rows; $ri++) {

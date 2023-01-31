@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q14 Page</title>
     </head>
     
     <body>
@@ -30,9 +30,9 @@
         υγρασία, την ταχύτητα του ανέμου, και τη μέγιστη ριπή ανέμου που καταγράφηκαν εκείνη
         τη μέρα. Να εμφανιστούν με φθίνουσα σειρά βάσει των καμμένων εκτάσεων.</h3>
 
-        <h1>Παρακαλώ εισάγετε αριθμό Χ:
+        <h1>Παρακαλώ εισάγετε αριθμό Χ:<br><br>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="text" name="x"></input><br>
+                Αριθμός Πυρκαγών:<input type="text" name="x"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

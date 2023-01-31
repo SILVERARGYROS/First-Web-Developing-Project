@@ -39,7 +39,7 @@
             ώρα_κατασβ:
             <input type="time" name="ώρα_κατασβ"></input><br>
             καμμένη_έκταση:
-            <input type="number" name="καμμένη_έκταση"></input><br>
+            <input type="number" step=any name="καμμένη_έκταση"></input><br>
             πλήθος_προσωπικού:
             <input type="number" name="πλήθος_προσωπικού"></input><br>
             πλήθος_οχημάτων:

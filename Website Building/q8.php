@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q8 Page</title>
     </head>
     
     <body>
@@ -30,12 +30,12 @@
         την μέση υγρασία και την μέγιστη ριπή ανέμου και ταξινομήστε τα αποτελέσματα κατά το
         όνομα του σταθμού σε αύξουσα σειρά.</h3>
 
-        <h1>Παρακαλώ εισάγεται μέγιστη θερμοκρασία Χ:
+        <h1>Παρακαλώ εισάγεται μέγιστη θερμοκρασία Χ:<br><br>
             μέση υγρασία Y και μέγιστη ριπή ανέμου Ζ:
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="number" step=any name="θερμοκρασία"></input><br>
-                <input type="number" step=any name="υγρασία"></input><br>
-                <input type="number" step=any name="ριπή"></input><br>
+                Θερμοκρασία:<input type="number" step=any name="θερμοκρασία"></input><br>
+                Υγρασία:<input type="number" step=any name="υγρασία"></input><br>
+                Ριπή:<input type="number" step=any name="ριπή"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

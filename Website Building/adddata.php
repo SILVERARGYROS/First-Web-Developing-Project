@@ -31,31 +31,31 @@
             ημερομηνία:
             <input type="date" name="ημερομηνία"></input><br>
             μέση_θερμοκρασία:
-            <input type="number" name="μέση_θερμοκρασία"></input><br>
+            <input type="number" step=any name="μέση_θερμοκρασία"></input><br>
             μέγιστη_θερμοκρασία:
-            <input type="number" name="μέγιστη_θερμοκρασία"></input><br>
+            <input type="number" step=any name="μέγιστη_θερμοκρασία"></input><br>
             ελάχιστη_θερμοκρασία:
-            <input type="number" name="ελάχιστη_θερμοκρασία"></input><br>
+            <input type="number" step=any name="ελάχιστη_θερμοκρασία"></input><br>
             μέση_υγρασία:
-            <input type="number" name="μέση_υγρασία"></input><br>
+            <input type="number" step=any name="μέση_υγρασία"></input><br>
             μέγιστη_υγρασία:
-            <input type="number" name="μέγιστη_υγρασία"></input><br>
+            <input type="number" step=any name="μέγιστη_υγρασία"></input><br>
             ελάχιστη_υγρασία:
-            <input type="number" name="ελάχιστη_υγρασία"></input><br>
+            <input type="number" step=any name="ελάχιστη_υγρασία"></input><br>
             μέση_ατμοσφ_πίεση:
-            <input type="number" name="μέση_ατμοσφ_πίεση"></input><br>
+            <input type="number" step=any name="μέση_ατμοσφ_πίεση"></input><br>
             μέγιστη_ατμοσφ_πίεση:
-            <input type="number" name="μέγιστη_ατμοσφ_πίεση"></input><br>
+            <input type="number" step=any name="μέγιστη_ατμοσφ_πίεση"></input><br>
             ελάχιστη_ατμοσφ_πίεση:
-            <input type="number" name="ελάχιστη_ατμοσφ_πίεση"></input><br>
+            <input type="number" step=any name="ελάχιστη_ατμοσφ_πίεση"></input><br>
             ημερήσια_βροχόπτωση:
-            <input type="number" name="ημερήσια_βροχόπτωση"></input><br>
+            <input type="number" step=any name="ημερήσια_βροχόπτωση"></input><br>
             μέση_ταχύτητα_ανέμου:
-            <input type="number" name="μέση_ταχύτητα_ανέμου"></input><br>
+            <input type="number" step=any name="μέση_ταχύτητα_ανέμου"></input><br>
             διευθ_ανέμου:
             <input type="text" name="διευθ_ανέμου"></input><br>
             μέγιστη_ριπή_ανέμου:
-            <input type="number" name="μέγιστη_ριπή_ανέμου"></input><br>
+            <input type="number" step=any name="μέγιστη_ριπή_ανέμου"></input><br>
 
             <button type="reset" value="reset" name="resetfields">Καθαρισμός Πεδίων</button>
             <input type="submit" value="Υποβολή" name="submit"></input>

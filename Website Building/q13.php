@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q13 Page</title>
     </head>
     
     <body>
@@ -27,10 +27,10 @@
         Παρουσιάστε τις περιφέρειες που έχουν καταγραφεί θερμοκρασίες μεγαλύτερες από X αλλά
         και θερμοκρασίες μικρότερες από Y</h3>
 
-        <h1>Παρακαλώ εισάγεται θερμοκρασίες Χ και Υ:
+        <h1>Παρακαλώ εισάγεται θερμοκρασίες Χ και Υ:<br><br>
             <form action = "<?php $_PHP_SELF ?>" method = "GET">
-                <input type="number" step=any name="x"></input><br>
-                <input type="number" step=any name="y"></input><br>
+                Θερμοκρασία Χ:<input type="number" step=any name="x"></input><br>
+                Θερμοκρασία Υ:<input type="number" step=any name="y"></input><br>
                 <input type="submit" value="Υποβολή" name="submit"></input>
             </form>
         </h1>

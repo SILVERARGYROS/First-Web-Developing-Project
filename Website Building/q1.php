@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-7">
         <meta name="author" content="Argyros Konstantinos">
         <meta name="author" content="Thanasa Eleni">
-        <title>db1u10 View Fires Page</title>
+        <title>db1u10 Q1 Page</title>
     </head>
     
     <body>
@@ -25,7 +25,8 @@
 
         <h3>Ερώτημα Q1:<br>
         Να παρουσιάσετε για κάθε περιφέρεια, για κάθε νομό, για κάθε δήμο, τις συντεταγμένες
-        του, με αλφαβητική σειρά (κατά την προαναφερθείσα σειρά ζητουμένων).</h3>
+        του, με αλφαβητική σειρά (κατά την προαναφερθείσα σειρά ζητουμένων). Η παρουσίαση να
+        γίνει με την συγκεκριμένη μορφή που αναφέρεται στην εκφώνηση.</h3>
         <h3>Αποτέλεσμα:</h3>
         <?php
             $link = pg_connect("host=$host dbname=$db user=$user password=$pass") 
@@ -39,31 +40,51 @@
 
             $rows = pg_num_rows($result);
         ?>
-        <table border="1">
-            <tr>
-                <th>όνομα_περιφέριας</th>
-                <th>όνομα_νομού</th>
-                <th>όνομα_Δήμου</th>
-                <th>γεωγ_πλάτος</th>
-                <th>γεωγ_μήκος</th>
-            </tr>
-            <?php
-
-            // Loop on rows in the result set.
-            for($ri = 0; $ri < $rows; $ri++) {
-                echo "<tr>\n";
-                $row = pg_fetch_array($result, $ri);
-                echo "<td>", $row["όνομα_περιφέριας"], "</td>
-                <td>", $row["όνομα_νομού"], "</td>	
-                <td>", $row["όνομα_Δήμου"], "</td>	
-                <td>", $row["γεωγ_πλάτος"], "</td>	
-                <td>", $row["γεωγ_μήκος"], "</td>	
-                </tr>
-                ";
+        <pre style="background-color: black;font-size: x-large;">
+        <?php
+        echo "\r";
+        // Loop on rows in the result set.
+        $c1 = 0;    //requested counters at the end of each line
+        $c2 = 0;
+        $c3 = 0;
+        $row2;      //temp row
+        for($i = 0; $i < $rows; $i++) {
+            $row = pg_fetch_array($result, $i);
+            if($i == 0)
+            {
+                $c1++;
+                $c2 = 0;
+                $c3 = 0;
+                echo $row["όνομα_περιφέριας"], " $c1", "<br>"; 
+                $c2++;
+                $c3 = 0;
+                echo "\t", $row["όνομα_νομού"], " $c1.$c2", "<br>"; 	
+                $c3++;
+                echo "\t\t", $row["όνομα_Δήμου"], " $c1.$c2.$c3: ", $row["γεωγ_πλάτος"], ", ", $row["γεωγ_μήκος"], "<br>"; 	
+                $row2 = $row;
+                continue;
             }
-            pg_close($link);
-            ?>
-    </table>
-       
+            
+            if($row["όνομα_περιφέριας"] != $row2["όνομα_περιφέριας"]){
+                $c1++;
+                $c2 = 0;
+                $c3 = 0;
+                echo $row["όνομα_περιφέριας"], " $c1", "<br>"; 
+            }
+            if($row["όνομα_νομού"] != $row2["όνομα_νομού"]){
+                $c2++;
+                $c3 = 0;
+                echo "\t", $row["όνομα_νομού"], " $c1.$c2", "<br>"; 	
+            }
+            $c3++;
+            echo "\t\t", $row["όνομα_Δήμου"], " $c1.$c2.$c3: ", $row["γεωγ_πλάτος"], ", ", $row["γεωγ_μήκος"], "<br>"; 	
+            $row2 = $row;
+        }
+
+        pg_close($link);
+
+        ?>
+        </pre>
+
     </body>
 </html>
