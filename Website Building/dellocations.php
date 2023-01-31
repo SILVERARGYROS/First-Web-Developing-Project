@@ -67,13 +67,17 @@
                         echo "Το στοιχείο που επιχειρήσατε να διαγράψετε δεν υπάρχει στη βάση!";
                     }
                     else{
+                        $row = pg_fetch_array($result, 0);
+                        $locationID = $row["id"];
+                        
                         $query = "DELETE FROM Δήμοι WHERE όνομα_περιφέριας='$a1' AND όνομα_νομού='$a2' AND όνομα_Δήμου='$a3' 
                         AND γεωγ_πλάτος=$a4 AND γεωγ_μήκος=$a5;";
-                        
                         $result = pg_query($link, $query) or die("Αποτυχία διαγραφής στοιχείου!\n"); 
+
+                        $result = pg_query($link, "DELETE FROM ΕΚΔΗΛΩΘΗΚΑΝ WHERE idΔήμοι = $locationID;");
+                        $result = pg_query($link, "DELETE FROM ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ WHERE idΔήμοι = $locationID;");
                         echo "Το στοιχείο διαγράφτηκε επιτυχώς.";
                     }
-
                     pg_close($link);
                 }
                 else
