@@ -92,7 +92,44 @@
                     $rows = pg_num_rows($result);
                     if($rows>0)
                     {
-                        echo "Το στοιχείο που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη βάση!";
+                        if($a15)
+                        {
+                            //finding dataID
+                            $row = pg_fetch_array($result, 0);
+                            $dataID = $row["id"];
+
+                            //checking station exists
+                            $result = pg_query($link, "SELECT * FROM Μ_Σταθμοί WHERE όνομα_μετεωρ_σταθμού = '$a15';") or die("Αυτός ο Σταθμός δεν είναι διαθέσιμος!");
+                            $rows = pg_num_rows($result);
+                            if($rows > 0)
+                            {
+                                //finding stationID
+                                $row = pg_fetch_array($result, 0);
+                                $stationID = $row["id"];
+
+                                //checking if relation exists
+                                $result = pg_query($link, "SELECT * FROM ΚΑΤΑΓΡΑΦΕΣ WHERE idΜΣ = $stationID AND idΜΔ = $dataID;");
+                                $rows = pg_num_rows($result);
+                                if($rows > 0)
+                                {
+                                    echo "Η συσχέτιση που επιχειρήσατε να εισάγετε υπάρχει ήδη!";
+                                } 
+                                else
+                                {
+                                    //inserting relation
+                                    $result = pg_query($link, "INSERT INTO ΚΑΤΑΓΡΑΦΕΣ (idΜΣ, idΜΔ) VALUES ($stationID, $dataID);") or die("Αποτυχία προσθήκης στοιχείου!");
+                                    echo "Η συσχέτιση προστέθηκε επιτυχώς.";
+                                }
+                            } 
+                            else
+                            {
+                                echo "Ο Σταθμός με τον οποίο επιχειρήσατε να κάνετε συσχέτιση δεν υπάρχει!\nΠαρακαλώ εισάγετε πρώτα το Σταθμό αυτό.";
+                            }      
+                        }
+                        else
+                        {
+                            echo "Το στοιχείο που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη βάση!";
+                        }
                     }
                     else{
 
@@ -118,8 +155,14 @@
                                 $dataID = $row["id"];
 
                                 //inserting relation
-                                $result = pg_query($link, "INSERT INTO KATAΓΡΑΦΕΣ (idΜΣ, idΜΔ) VALUES ($stationID, $dataID);");
+                                $result = pg_query($link, "INSERT INTO ΚΑΤΑΓΡΑΦΕΣ (idΜΣ, idΜΔ) VALUES ($stationID, $dataID);") or die("Αποτυχία προσθήκης στοιχείου!");
                                 echo "Το στοιχείο και η συσχέτισή του προστέθηκαν επιτυχώς.";
+                            }
+                            else
+                            {
+                                $query = "INSERT INTO Μ_Δεδομένα(id, ημερομηνία, μέση_θερμοκρασία, μέγιστη_θερμοκρασία, ελάχιστη_θερμοκρασία, μέση_υγρασία, μέγιστη_υγρασία, ελάχιστη_υγρασία, μέση_ατμοσφ_πίεση, μέγιστη_ατμοσφ_πίεση, ελάχιστη_ατμοσφ_πίεση, ημερήσια_βροχόπτωση, μέση_ταχύτητα_ανέμου, διευθ_ανέμου, μέγιστη_ριπή_ανέμου) VALUES (default,'$a1',$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,'$a13',$a14);";
+                                $result = pg_query($link, $query) or die("Αποτυχία προσθήκης στοιχείου!\n"); 
+                                echo "Το στοιχείο προστέθηκε επιτυχώς. Δε συσχετίστηκε όμως επειδή ο Σταθμός όμως αυτός δεν υπάρχει.";
                             }
                         }
                         else

@@ -82,12 +82,12 @@
                         $row = pg_fetch_array($result, 0);
                         $fireID = $row["id"];
                         
+                        $result = pg_query($link, "DELETE FROM ΕΚΔΗΛΩΘΗΚΑΝ WHERE idΔΠ = $fireID;");
+                        echo "Το στοιχείο διαγραφτηκε επιτυχώς.";
+                        
                         $query = "DELETE FROM Δασικές_Πυρκαγιές WHERE όνομα_πυρ_σώματος='$a1' AND ημερομ_έναρξης='$a2' AND ώρα_έναρξης='$a3' AND ημερομ_κατασβ='$a4' 
                         AND ώρα_κατασβ='$a5' AND καμμένη_έκταση=$a6 AND πλήθος_προσωπικού=$a7 AND πλήθος_οχημάτων=$a8 AND πλήθος_εναέριων_μέσων=$a9;";
                         $result = pg_query($link, $query) or die("Αποτυχία διαγραφής στοιχείου!\n"); 
-
-                        $result = pg_query($link, "DELETE FROM ΕΚΔΗΛΩΘΗΚΑΝ WHERE idΔΠ = $fireID;");
-                        echo "Το στοιχείο διαγραφτηκε επιτυχώς.";
                     }
 
                     pg_close($link);

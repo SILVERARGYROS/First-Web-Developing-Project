@@ -150,7 +150,7 @@
                 clearstatcache();
             ?>
             </form>
-            <br><br><a style='color: red' href="index.php">Πίσω στην αρχική</a>
+            <br><br><a style='color: red' href="homePage.php">Πίσω στην αρχική</a>
 
         </p>  
     </body>

@@ -65,7 +65,44 @@
                     $rows = pg_num_rows($result);
                     if($rows>0)
                     {
-                        echo "Το στοιχείο που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη βάση!";
+                        if($a6)
+                        {
+                            //finding locationID
+                            $row = pg_fetch_array($result, 0);
+                            $locationID = $row["id"];
+
+                            //checking station exists
+                            $result = pg_query($link, "SELECT * FROM Μ_Σταθμοί WHERE όνομα_μετεωρ_σταθμού = '$a6';") or die("Αυτός ο Σταθμός δεν είναι διαθέσιμος!");
+                            $rows = pg_num_rows($result);
+                            if($rows > 0)
+                            {
+                                //finding stationID
+                                $row = pg_fetch_array($result, 0);
+                                $stationID = $row["id"];
+
+                                //checking if relation exists
+                                $result = pg_query($link, "SELECT * FROM ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ WHERE idΜΣ = $stationID AND idΔήμοι = $locationID;");
+                                $rows = pg_num_rows($result);
+                                if($rows > 0)
+                                {
+                                    echo "Η συσχέτιση που επιχειρήσατε να εισάγετε υπάρχει ήδη!";
+                                } 
+                                else
+                                {
+                                    //inserting relation
+                                    $result = pg_query($link, "INSERT INTO ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ (idΜΣ, idΔήμοι) VALUES ($stationID, $locationID);");
+                                    echo "Η συσχέτιση προστέθηκε επιτυχώς.";
+                                }
+                            } 
+                            else
+                            {
+                                echo "Ο Σταθμός με τον οποίο επιχειρήσατε να κάνετε συσχέτιση δεν υπάρχει!\nΠαρακαλώ εισάγετε πρώτα το Σταθμό αυτό.";
+                            }      
+                        }
+                        else
+                        {
+                            echo "Το στοιχείο που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη βάση!";
+                        }
                     }
                     else
                     {
@@ -93,6 +130,12 @@
                                 //inserting relation
                                 $result = pg_query($link, "INSERT INTO ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ (idΜΣ, idΔήμοι) VALUES ($stationID, $locationID);");
                                 echo "Το στοιχείο και η συσχέτισή του προστέθηκαν επιτυχώς.";
+                            }
+                            else
+                            {
+                                $query = "INSERT INTO Δήμοι(id, όνομα_περιφέριας, όνομα_νομού, όνομα_Δήμου, γεωγ_πλάτος, γεωγ_μήκος) VALUES (default,'$a1','$a2','$a3',$a4,$a5);";
+                                $result = pg_query($link, $query) or die("Αποτυχία προσθήκης στοιχείου!"); 
+                                echo "Το στοιχείο προστέθηκε επιτυχώς. Δε συσχετίστηκε όμως επειδή ο Σταθμός όμως αυτός δεν υπάρχει.";
                             }
                         }
                         else

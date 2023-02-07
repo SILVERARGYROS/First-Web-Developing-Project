@@ -67,12 +67,13 @@
                         $row = pg_fetch_array($result, 0);
                         $stationID = $row["id"];
                         
+                        $result = pg_query($link, "DELETE FROM ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ WHERE idΜΣ = $stationID;");
+                        $result = pg_query($link, "DELETE FROM ΚΑΤΑΓΡΑΦΕΣ WHERE idΜΣ = $stationID;");
+                        
                         $query = "DELETE FROM Μ_Σταθμοί WHERE όνομα_μετεωρ_σταθμού='$a1' AND γεωγ_πλάτος=$a2 AND γεωγ_μήκος=$a3 
                         AND υψόμετρο=$a4;";
                         $result = pg_query($link, $query) or die("Αποτυχία διαγραφής στοιχείου!\n"); 
                         
-                        $result = pg_query($link, "DELETE FROM ΣΤΑΘΜΟΣ_ΑΝΑΦΟΡΑΣ WHERE idΜΣ = $stationID;");
-                        $result = pg_query($link, "DELETE FROM ΚΑΤΑΓΡΑΦΕΣ WHERE idΜΣ = $stationID;");
                         echo "Το στοιχείο διαγράφτηκε επιτυχώς.";
                     }
 
